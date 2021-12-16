@@ -6,7 +6,6 @@ export type ErrorRegistrationValues = Partial<RegistrationValues>;
 
 export const validate = (values: RegistrationValues) => {
   const errors: ErrorRegistrationValues = {};
-  // const isValid = regexp.regPasswordRules.test(values.password);
 
   if (!regexp.regMailRules.test(values.email)) {
     errors.email = i18n.t('invalidEmail');
@@ -19,6 +18,6 @@ export const validate = (values: RegistrationValues) => {
   if (values.password !== values.confirmPassword) {
     errors.confirmPassword = i18n.t('passwordsDoNotMatch');
   }
-  // console.log(regexp.regPasswordRules.test(values.password));
+
   return errors;
 };

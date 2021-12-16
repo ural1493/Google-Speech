@@ -2,13 +2,15 @@ import { FC, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Typography, Button } from '@mui/material/';
-import { AuthForm } from '../../core/components/AuthForm/AuthForm';
 import { useDispatch } from 'react-redux';
+import { AuthForm } from '../../core/components/AuthForm/AuthForm';
 import { registrationInit } from '../../core/redux/actions/auth/registration';
 import { MainRoutes } from '../../core/constants/MainRouters';
 import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
 import { validate } from './validation';
+import { StyledButton } from '../../core/components/StyledButton/StyledButton';
+import { Heading } from '../../core/components/Heading/Heading';
+import { StyledTextFiled } from '../../core/components/StyledTextField/StyledTextField';
 
 export const Registration: FC = () => {
   const { t } = useTranslation();
@@ -23,11 +25,8 @@ export const Registration: FC = () => {
       confirmPassword: '',
     },
     isInitialValid: false,
-    // validateOnBlur: true,
-    // validateOnChange: true,
     validate,
     onSubmit: (values) => {
-      // const errorValues = validate(values);
       const { email, password } = values;
       const userData = { email, password };
       dispatch(registrationInit(userData));
@@ -42,11 +41,11 @@ export const Registration: FC = () => {
 
   return (
     <>
-      <Typography align="center" variant="h2">
+      <Heading align="center" variant="h2">
         {t('registration')}
-      </Typography>
+      </Heading>
       <AuthForm onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
-        <TextField
+        <StyledTextFiled
           required
           error={formik.errors?.email ? true : false}
           helperText={formik.errors?.email}
@@ -55,7 +54,7 @@ export const Registration: FC = () => {
           onChange={formik.handleChange}
           value={formik.values.email}
         />
-        <TextField
+        <StyledTextFiled
           required
           error={formik.errors?.password ? true : false}
           helperText={formik.errors?.password}
@@ -65,7 +64,7 @@ export const Registration: FC = () => {
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        <TextField
+        <StyledTextFiled
           required
           error={formik.errors?.confirmPassword ? true : false}
           helperText={formik.errors?.confirmPassword}
@@ -75,14 +74,14 @@ export const Registration: FC = () => {
           onChange={formik.handleChange}
           value={formik.values.confirmPassword}
         />
-        <Button
+        <StyledButton
           disabled={!formik.isValid && !formik.isValidating}
           size="large"
           variant="contained"
           type="submit"
         >
           {t('submit')}
-        </Button>
+        </StyledButton>
       </AuthForm>
     </>
   );

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MediaQueries } from '../../constants/mediaQueries';
 
 export const AuthForm = styled.form`
   margin-top: 20px;
@@ -6,5 +7,9 @@ export const AuthForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 0.5rem;
+
+  ${MediaQueries.DesktopLarge} {
+    gap: 3rem;
+  }
 `;

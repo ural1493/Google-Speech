@@ -1,14 +1,16 @@
 import { FC, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { Button, Typography, TextField } from '@mui/material/';
 import { useNavigate } from 'react-router-dom';
-import { AuthForm } from '../../core/components/AuthForm/AuthForm';
 import { useDispatch } from 'react-redux';
+import { AuthForm } from '../../core/components/AuthForm/AuthForm';
 import { loginInit } from '../../core/redux/actions/auth/login';
 import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
 import { MainRoutes } from '../../core/constants/MainRouters';
 import { validate } from './validation';
+import { StyledButton } from '../../core/components/StyledButton/StyledButton';
+import { Heading } from '../../core/components/Heading/Heading';
+import { StyledTextFiled } from '../../core/components/StyledTextField/StyledTextField';
 
 export const Login: FC = () => {
   const { t } = useTranslation();
@@ -37,11 +39,11 @@ export const Login: FC = () => {
 
   return (
     <>
-      <Typography align="center" variant="h2">
+      <Heading align="center" variant="h2">
         {t('login')}
-      </Typography>
+      </Heading>
       <AuthForm onSubmit={formik.handleSubmit}>
-        <TextField
+        <StyledTextFiled
           required
           error={formik.errors?.email ? true : false}
           helperText={formik.errors?.email}
@@ -50,7 +52,7 @@ export const Login: FC = () => {
           onChange={formik.handleChange}
           value={formik.values.email}
         />
-        <TextField
+        <StyledTextFiled
           required
           error={formik.errors?.password ? true : false}
           helperText={formik.errors?.password}
@@ -60,14 +62,14 @@ export const Login: FC = () => {
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        <Button
+        <StyledButton
           disabled={!formik.isValid && !formik.isValidating}
           size="large"
           variant="contained"
           type="submit"
         >
           {t('submit')}
-        </Button>
+        </StyledButton>
       </AuthForm>
     </>
   );

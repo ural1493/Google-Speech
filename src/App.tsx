@@ -10,6 +10,7 @@ import { setUser } from './core/redux/actions/auth/user';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './core/theme';
 import { useDispatch } from 'react-redux';
+import { RequireAuth } from './core/components/RequireAuth/RequireAuth';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,8 +34,22 @@ const App: React.FC = () => {
           <Routes>
             <Route path={MainRoutes.Register} element={<Registration />} />
             <Route path={MainRoutes.Login} element={<Login />} />
-            <Route path={MainRoutes.Main} element={<Main />} />
-            <Route path={MainRoutes.Start} element={<Start />} />
+            <Route
+              path={MainRoutes.Main}
+              element={
+                <RequireAuth redirectTo={MainRoutes.Login}>
+                  <Main />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path={MainRoutes.Start}
+              element={
+                <RequireAuth redirectTo={MainRoutes.Login}>
+                  <Start />
+                </RequireAuth>
+              }
+            />
           </Routes>
         </Router>
       </ThemeProvider>

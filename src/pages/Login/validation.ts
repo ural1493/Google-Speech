@@ -4,7 +4,7 @@ import i18n from '../../core/i18n/i18n';
 
 export type ErrorRegistrationValues = Partial<LoginValues>;
 
-export const validate = (values: LoginValues) => {
+export const validate = (values: LoginValues): ErrorRegistrationValues => {
   const errors: ErrorRegistrationValues = {};
 
   if (!regexp.regMailRules.test(values.email)) {

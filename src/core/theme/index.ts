@@ -1,14 +1,15 @@
-import { Colors } from '../constants/colors';
-
 export const theme = {
   palette: {
     primary: {
-      main: Colors.primaryMain,
-      mainDark: Colors.primaryMainDark,
+      main: '#00c49d',
+      mainDark: '#00c2b2',
     },
     text: {
-      main: Colors.textMain,
-      secondary: Colors.textSecondary,
+      main: '#000',
+      secondary: '#fff',
+    },
+    boxShadowColor: {
+      heading: 'rgba(34, 60, 80, 0.2)',
     },
   },
 };

@@ -7,5 +7,6 @@
   "confirmPassword": "confirm password",
   "invalidEmail": "invalid email",
   "invalidPassword": "invalid password",
-  "passwordsDoNotMatch": "passwords do not match"
+  "passwordsDoNotMatch": "passwords do not match",
+  "registrate": "registrate"
 }

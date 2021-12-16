@@ -7,9 +7,15 @@ export const AuthForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 4rem;
+  margin-top: 4rem;
 
   ${MediaQueries.DesktopLarge} {
     gap: 3rem;
+    margin-top: 3rem;
+  }
+  ${MediaQueries.Laptop} {
+    gap: 1.5rem;
+    margin-top: 1.5rem;
   }
 `;

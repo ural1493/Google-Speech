@@ -1,18 +1,16 @@
-import { TextField } from '@mui/material';
+import { TextField as TextFieldComponent } from '@mui/material';
 import styled from 'styled-components';
 import { MediaQueries } from '../../constants/mediaQueries';
 
-export const StyledTextFiled = styled(TextField)`
-  ${MediaQueries.Laptop} {
-    & .MuiInputBase-root {
-      font-size: 1.5rem;
-    }
-    & .MuiInputLabel-root {
-      font-size: 1.2rem;
-    }
-    & .MuiFormHelperText-root {
-      font-size: 1.2rem;
-    }
+export const TextFiled = styled(TextFieldComponent)`
+  & .MuiInputBase-root {
+    font-size: 3rem;
+  }
+  & .MuiInputLabel-root {
+    font-size: 2rem;
+  }
+  & .MuiFormHelperText-root {
+    font-size: 2rem;
   }
 
   ${MediaQueries.Desktop} {
@@ -27,15 +25,15 @@ export const StyledTextFiled = styled(TextField)`
     }
   }
 
-  ${MediaQueries.DesktopLarge} {
+  ${MediaQueries.Mobile} {
     & .MuiInputBase-root {
-      font-size: 3rem;
+      font-size: 1.2rem;
     }
     & .MuiInputLabel-root {
-      font-size: 2rem;
+      font-size: 1rem;
     }
     & .MuiFormHelperText-root {
-      font-size: 2rem;
+      font-size: 1rem;
     }
   }
 `;

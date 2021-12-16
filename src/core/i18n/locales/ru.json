@@ -7,5 +7,6 @@
   "confirmPassword": "подтвердите пароль",
   "invalidEmail": "невалидный email",
   "invalidPassword": "невалидный пароль",
-  "passwordsDoNotMatch": "пароли не совпадают"
+  "passwordsDoNotMatch": "пароли не совпадают",
+  "registrate": "зарегистрироваться"
 }

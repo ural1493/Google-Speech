@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks/typedReduxHooks';
+import { selectUser } from '../../redux/selectors/user';
 
 type RequireAuthProps = {
   redirectTo: string;
@@ -12,7 +13,7 @@ export const RequireAuth: FC<RequireAuthProps> = ({
   children,
   forAuth = false,
 }) => {
-  const { user } = useTypedSelector((state) => state.auth);
+  const user = useTypedSelector(selectUser);
 
   if (forAuth) {
     return user ? <Navigate to={redirectTo} /> : (children as ReactElement);

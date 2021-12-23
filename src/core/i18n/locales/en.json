@@ -8,5 +8,10 @@
   "invalidEmail": "invalid email",
   "invalidPassword": "invalid password",
   "passwordsDoNotMatch": "passwords do not match",
-  "registrate": "registrate"
+  "registrate": "registrate",
+  "start": "start",
+  "startText": "Click on the words to hear them sound. Click on the button and speak the words into the microphone.",
+  "restart": "restart",
+  "speakPlease": "speak please",
+  "results": "results"
 }

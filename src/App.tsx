@@ -4,7 +4,7 @@ import { auth } from './core/firebase';
 import { MainRoutes } from './core/constants/MainRouters';
 import { Login } from './pages/Login/Login';
 import { Registration } from './pages/Registration/Registration';
-import { Start } from './core/components/Start/Start';
+import { Start } from './pages/Start/Start';
 import { Main } from './pages/Main/Main';
 import { setUser } from './core/redux/actions/auth/user';
 import { ThemeProvider } from 'styled-components';
@@ -20,7 +20,7 @@ const App: React.FC = () => {
     const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) {
         dispatch(setUser(firebaseUser));
-        navigate(MainRoutes.Main);
+        // navigate(MainRoutes.Start);
       } else {
         dispatch(setUser(null));
       }

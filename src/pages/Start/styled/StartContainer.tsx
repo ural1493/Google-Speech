@@ -10,6 +10,7 @@ export const StartContainer = styled.div`
   gap: 60px;
   background-image: url(${bg});
   background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
 
   ${Button} {

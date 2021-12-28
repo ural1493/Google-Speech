@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getWordsByPageAndGroup } from '../../api';
+import _ from 'lodash';
 import {
   getWords,
   getWordsFail,
@@ -7,6 +8,7 @@ import {
 } from '../actions/words/words';
 import { Word } from '../types/words/words';
 import { AxiosResponse } from 'axios';
+import { AMOUNT_OF_WORDS, MAX_PAGE } from '../../constants/app';
 
 export function* WordsWorker(): Generator<
   unknown,
@@ -14,9 +16,12 @@ export function* WordsWorker(): Generator<
   AxiosResponse<Word[]>
 > {
   try {
-    const response = yield call(getWordsByPageAndGroup);
+    const randomPage = Math.floor(Math.random() * MAX_PAGE);
+    const response = yield call(getWordsByPageAndGroup, randomPage);
+    const data = _.shuffle(response.data);
+    data.length = AMOUNT_OF_WORDS;
 
-    yield put(getWordsSuccess(response.data));
+    yield put(getWordsSuccess(data));
   } catch (error) {
     yield put(getWordsFail((error as Error).message));
   }

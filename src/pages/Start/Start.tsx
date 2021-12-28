@@ -4,7 +4,7 @@ import { StartHeader } from './styled/StartHeader';
 import { StartText } from './styled/StartText';
 import { StartContainer } from './styled/StartContainer';
 import { Link } from '../../core/components/RegistrateLink/styled/Link';
-// import { MainRoutes } from '../../core/constants/MainRouters';
+import { MainRoutes } from '../../core/constants/MainRouters';
 
 // TODO
 import { signOut } from 'firebase/auth';
@@ -21,7 +21,7 @@ export const Start: FC = () => {
       <StartHeader onClick={handleLogout}>SPEAKIT</StartHeader>
       <StartText>{t('startText')}</StartText>
       <Button>
-        <Link to="/a">{t('start')}</Link>
+        <Link to={MainRoutes.Main}>{t('start')}</Link>
       </Button>
     </StartContainer>
   );

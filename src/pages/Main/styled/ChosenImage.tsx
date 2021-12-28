@@ -9,7 +9,11 @@ export const ChosenImage: FC<ChosenImageProps> = ({ imageUrl }) => {
     <div>
       <img
         width={400}
-        src={`https://raw.githubusercontent.com/irinainina/rslang/rslang-data/data/${imageUrl}`}
+        src={
+          !imageUrl
+            ? 'https://raw.githubusercontent.com/irinainina/rslang/rslang-data/data/files/01_0001.jpg'
+            : `https://raw.githubusercontent.com/irinainina/rslang/rslang-data/data/${imageUrl}`
+        }
         alt=""
       />
     </div>

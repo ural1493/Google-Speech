@@ -9,7 +9,6 @@ import { Button } from '../../core/components/Button/Button';
 import { Heading } from '../../core/components/Heading/Heading';
 import { TextFiled } from '../../core/components/TextField/TextField';
 import { RegistrateLink } from '../../core/components/RegistrateLink/RegistrateLink';
-import { Link } from 'react-router-dom';
 
 export const Login: FC = () => {
   const { t } = useTranslation();
@@ -61,7 +60,6 @@ export const Login: FC = () => {
         >
           {t('submit')}
         </Button>
-        <Link to="/">asdasd</Link>
       </AuthForm>
     </>
   );

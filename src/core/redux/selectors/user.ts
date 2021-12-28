@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 import { RootState } from '../reducers';
 
-export const selectUser = (state: RootState) => state.auth.user;
+export const selectUser = (state: RootState): User | null => state.auth.user;

@@ -21,6 +21,7 @@ const App: React.FC = () => {
       if (firebaseUser) {
         dispatch(setUser(firebaseUser));
         // navigate(MainRoutes.Start);
+        // TODO редирект все еще работает.
       } else {
         dispatch(setUser(null));
       }

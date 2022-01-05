@@ -8,7 +8,8 @@ import { validate } from './validation';
 import { Button } from '../../core/components/Button/Button';
 import { Heading } from '../../core/components/Heading/Heading';
 import { TextFiled } from '../../core/components/TextField/TextField';
-import { RegistrateLink } from '../../core/components/RegistrateLink/RegistrateLink';
+import { AuthLink } from '../../core/components/RegistrateLink/RegistrateLink';
+import { MainRoutes } from '../../core/constants/MainRouters';
 
 export const Login: FC = () => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ export const Login: FC = () => {
       <Heading align="center" variant="h2">
         {t('login')}
       </Heading>
-      <RegistrateLink>{t('registrate')}</RegistrateLink>
+      <AuthLink to={MainRoutes.Register}>{t('registrate')}</AuthLink>
       <AuthForm onSubmit={formik.handleSubmit}>
         <TextFiled
           required

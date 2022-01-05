@@ -13,5 +13,8 @@ export const theme = {
       heading: 'rgba(34, 60, 80, 0.2)',
       word: 'rgb(14 30 37 / 12%)',
     },
+    border: {
+      wordContainer: 'lightgray',
+    },
   },
 };

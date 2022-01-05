@@ -1,12 +1,13 @@
 import { createAction } from '@reduxjs/toolkit';
-import { Word, WordsActionTypes } from '../../types/words/words';
+import { WordsActionTypes } from '../../types/words/words';
+import { Word } from '../../../interfaces/words';
 
 export const getWords = createAction(WordsActionTypes.GET_WORDS);
 
 export const getWordsSuccess = createAction(
   WordsActionTypes.GET_WORDS_SUCCESS,
-  (data: Word[] | null) => ({
-    payload: data,
+  (words: Word[] | null) => ({
+    payload: words,
   }),
 );
 
@@ -16,3 +17,43 @@ export const getWordsFail = createAction(
     payload: errorMessage,
   }),
 );
+
+export const checkWord = createAction(
+  WordsActionTypes.CHECK_WORD,
+  (word: string) => ({ payload: word }),
+);
+
+export const addWordToAnswered = createAction(
+  WordsActionTypes.ADD_WORD_TO_ANSWERED,
+  (id: Word['id']) => ({ payload: id }),
+);
+
+export const setSkippedWords = createAction(
+  WordsActionTypes.SET_SKIPPED_WORDS,
+  (id: Word['id'], isSkipped: boolean) => ({
+    payload: { id, isSkipped },
+  }),
+);
+
+export const addToSkipped = createAction(
+  WordsActionTypes.ADD_TO_SKIPPED,
+  (id: Word['id']) => ({
+    payload: id,
+  }),
+);
+
+export const removeFromSkipped = createAction(
+  WordsActionTypes.REMOVE_FROM_SKIPPED,
+  (id: Word['id']) => ({
+    payload: id,
+  }),
+);
+
+export const setGroup = createAction(
+  WordsActionTypes.SET_GROUP,
+  (group: number) => ({
+    payload: group,
+  }),
+);
+
+export const resetWords = createAction(WordsActionTypes.RESET_WORDS);

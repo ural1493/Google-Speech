@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import startImage from '../../../assets/default.jpg';
+import { url } from '../../../core/constants/urls';
 
 interface ChosenImageProps {
   imageUrl: string;
@@ -9,11 +11,7 @@ export const ChosenImage: FC<ChosenImageProps> = ({ imageUrl }) => {
     <div>
       <img
         width={400}
-        src={
-          !imageUrl
-            ? 'https://raw.githubusercontent.com/irinainina/rslang/rslang-data/data/files/01_0001.jpg'
-            : `https://raw.githubusercontent.com/irinainina/rslang/rslang-data/data/${imageUrl}`
-        }
+        src={!imageUrl ? startImage : `${url.IMAGES}${imageUrl}`}
         alt=""
       />
     </div>

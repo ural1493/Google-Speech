@@ -1,19 +1,19 @@
 import { FC } from 'react';
 import { Word } from '../Word/Word';
 import { Modal } from '@mui/material';
-import { Word as WordType } from '../../redux/types/words/words';
+import { Word as WordType } from '../../interfaces/words';
 
 interface ResultsProps {
   onClose: () => void;
   isOpen: boolean;
-  data: WordType[] | null;
+  words: WordType[] | null;
   rightAnswers: string[];
 }
 
 export const Results: FC<ResultsProps> = ({
   onClose,
   isOpen,
-  data,
+  words,
   rightAnswers,
 }) => {
   return (
@@ -30,8 +30,8 @@ export const Results: FC<ResultsProps> = ({
         }}
       >
         <div>RIGHT:</div>
-        {data &&
-          data
+        {words &&
+          words
             .filter(({ id }) => rightAnswers.includes(id))
             .map(({ word, transcription, id, audio }) => (
               <Word
@@ -42,8 +42,8 @@ export const Results: FC<ResultsProps> = ({
               />
             ))}
         <div>WRONG:</div>
-        {data &&
-          data
+        {words &&
+          words
             .filter(({ id }) => !rightAnswers.includes(id))
             .map(({ word, transcription, id, audio }) => (
               <Word

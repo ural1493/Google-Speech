@@ -1,10 +1,9 @@
 import { ChangeEvent, FC } from 'react';
 import { Typography } from '@mui/material';
-import { SoundIcon } from '../SoundIcon/SoundIcon';
-import { SvgContainer } from './SvgContainer';
 import { WordContainer } from './WordContainer';
 import { TextContainer } from './TextContainer';
-import { URL } from '../../constants/urls';
+import { url } from '../../constants/urls';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 interface WordProps {
   id?: string;
@@ -30,7 +29,7 @@ export const Word: FC<WordProps> = ({
   isAnswered,
 }) => {
   const handleClick = () => {
-    audioComponent.src = URL.DATA + audio;
+    audioComponent.src = `${url.DATA}${audio}`;
     audioComponent.play();
 
     if (onImageChange && image) {
@@ -38,17 +37,15 @@ export const Word: FC<WordProps> = ({
     }
   };
 
-  const handleSkipWord = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleSkipWord = (event: ChangeEvent<HTMLInputElement>) => {
     if (onSkipWord && id) {
-      onSkipWord(id, e);
+      onSkipWord(id, event);
     }
   };
 
   return (
     <WordContainer onClick={handleClick}>
-      <SvgContainer>
-        <SoundIcon />
-      </SvgContainer>
+      <VolumeUpIcon />
       <TextContainer>
         {isAnswered && 'молодчик'}
         <input

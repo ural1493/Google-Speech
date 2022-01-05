@@ -4,83 +4,85 @@ import { ButtonContainer } from './styled/ButtonContainer';
 import { MainContainer } from './styled/MainContainer';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { getWords } from '../../core/redux/actions/words/words';
+import {
+  getWords,
+  resetWords,
+  setGroup,
+  setSkippedWords,
+} from '../../core/redux/actions/words/words';
 import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
 import { ChosenImage } from './styled/ChosenImage';
 import { Word } from '../../core/components/Word/Word';
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from 'react-speech-recognition';
 import { Results } from '../../core/components/Results/Results';
+import { useSpeech } from '../../core/hooks/useSpeech';
+import { selectWords } from '../../core/redux/selectors/words';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { groupCoefficients } from '../../core/constants/app';
 
 export const Main: FC = () => {
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
-  const [rightAnswers, setRightAnswers] = useState<string[]>([]);
+  const { transcript, listening, handleStartListening, handleStopListening } =
+    useSpeech();
   const [chosenImg, setChosenImg] = useState('');
   const [resultsIsOpen, setResultsIsOpen] = useState(false);
-  const [skipWords, setSkipWords] = useState<string[]>([]);
-
-  const handleClose = () => setResultsIsOpen(false);
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { data } = useTypedSelector((state) => state.words);
+  const { words, answeredWords, skippedWords, group } =
+    useTypedSelector(selectWords);
 
   useEffect(() => {
     dispatch(getWords());
-  }, [dispatch]);
+  }, [dispatch, group]);
 
   useEffect(() => {
-    if (data && rightAnswers) {
-      if (skipWords.length + rightAnswers.length === data.length) {
+    if (words && answeredWords) {
+      const skippedWordsAmount = skippedWords.length;
+      const answeredWordsAmount = answeredWords.length;
+      const AllWordsAmount = words.length;
+
+      if (skippedWordsAmount + answeredWordsAmount === AllWordsAmount) {
+        handleStopListening();
         setResultsIsOpen(true);
       }
     }
-  }, [rightAnswers, data, skipWords]);
+  }, [answeredWords, words, skippedWords, handleStopListening]);
 
-  const speechRecognitionInstance =
-    SpeechRecognition.getRecognition() as SpeechRecognitionInstance;
-
-  speechRecognitionInstance.onend = () => {
-    const foundWord = data?.find((word) => word.word === transcript);
-    if (
-      foundWord &&
-      !rightAnswers.includes(foundWord.id) &&
-      !skipWords.includes(foundWord.id)
-    ) {
-      setRightAnswers((prevState) => [...prevState, foundWord.id]);
-    }
-
-    speechRecognitionInstance.start();
-  };
-
-  speechRecognitionInstance.onspeechstart = () => {
-    resetTranscript();
-  };
-
-  const handleStartListening = () => {
-    SpeechRecognition.startListening({
-      language: 'en-US',
-    });
+  const handleClose = () => {
+    setResultsIsOpen(false);
+    dispatch(resetWords());
+    dispatch(getWords());
   };
 
   const handleSkipWord = (id: string, e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSkipWords((prevState) => [...prevState, id]);
-    } else {
-      setSkipWords((prevState) => [...prevState.filter((el) => el !== id)]);
-    }
+    dispatch(setSkippedWords(id, e.target.checked));
+  };
+
+  const handleChangeCategory = (event: SelectChangeEvent) => {
+    dispatch(setGroup(+event.target));
   };
 
   return (
     <MainContainer>
+      <div>
+        <Select
+          onChange={handleChangeCategory}
+          defaultValue={Object.keys(groupCoefficients)[0]}
+          label="category"
+        >
+          {Object.keys(groupCoefficients).map((category) => (
+            <MenuItem value={category} key={category}>{`category ${
+              +category + 1
+            }`}</MenuItem>
+          ))}
+        </Select>
+      </div>
       <ChosenImage imageUrl={chosenImg} />
 
       <div>{listening ? 'on' : 'off'}</div>
       <div>{transcript}</div>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {data &&
-          data.map(({ word, transcription, id, audio, image }) => (
+        {words &&
+          words.map(({ word, transcription, id, audio, image }) => (
             <Word
               key={id}
               id={id}
@@ -90,7 +92,7 @@ export const Main: FC = () => {
               image={image}
               onImageChange={setChosenImg}
               onSkipWord={handleSkipWord}
-              isAnswered={rightAnswers.includes(id)}
+              isAnswered={answeredWords.includes(id)}
             />
           ))}
       </div>
@@ -98,23 +100,14 @@ export const Main: FC = () => {
         <Button>{t('restart')}</Button>
         <Button onClick={handleStartListening}>{t('speakPlease')}</Button>
         <Button>{t('results')}</Button>
+        <button onClick={handleStopListening}>STOP</button>
       </ButtonContainer>
       <Results
         onClose={handleClose}
         isOpen={resultsIsOpen}
-        data={data}
-        rightAnswers={rightAnswers}
+        words={words}
+        rightAnswers={answeredWords}
       />
     </MainContainer>
   );
 };
-
-interface SpeechRecognitionInstance extends SpeechRecognition {
-  onspeechend: () => void;
-  onend: () => void;
-  onaudioend: () => void;
-  start: () => void;
-  stop: () => void;
-  onspeechstart: () => void;
-  onresult: () => void;
-}

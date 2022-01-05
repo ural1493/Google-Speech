@@ -10,7 +10,6 @@ export const Button = styled(ButtonComponent)`
     }
     color: ${(props) => props.theme.palette.text.secondary};
     font-size: 2.5rem;
-    // min-width: 200px;
     max-width: 200px;
     ${MediaQueries.DesktopLarge} {
       font-size: 2rem;

@@ -6,7 +6,7 @@ export const WordContainer = styled.div`
   align-items: center;
 
   padding: 10px;
-  border: 1px solid rgb(206, 212, 218);
+  border: 1px solid ${(props) => props.theme.palette.border.wordContainer};
   border-radius: 5px;
   transition: 0.3s;
   max-width: 300px;

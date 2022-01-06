@@ -8,5 +8,7 @@
   "invalidEmail": "invalid email",
   "invalidPassword": "invalid password",
   "passwordsDoNotMatch": "passwords do not match",
-  "registrate": "registrate"
+  "registrate": "registrate",
+  "auth/user-not-found": "user not found",
+  "auth/email-already-in-use": "email already in use"
 }

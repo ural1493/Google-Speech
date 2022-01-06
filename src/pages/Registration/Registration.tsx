@@ -3,15 +3,22 @@ import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { AuthForm } from '../../core/components/AuthForm/AuthForm';
-import { registrationInit } from '../../core/redux/actions/auth/registration';
+import {
+  clearError,
+  registrationInit,
+} from '../../core/redux/actions/auth/registration';
 import { validate } from './validation';
 import { Button } from '../../core/components/Button/Button';
 import { Heading } from '../../core/components/Heading/Heading';
 import { TextFiled } from '../../core/components/TextField/TextField';
+import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
+import { selectUserError } from '../../core/redux/selectors/user';
+import { Alert } from '@mui/material';
 
 export const Registration: FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const error = useTypedSelector(selectUserError);
 
   const formik = useFormik({
     initialValues: {
@@ -27,6 +34,10 @@ export const Registration: FC = () => {
       dispatch(registrationInit(userData));
     },
   });
+
+  const handleCloseError = () => {
+    dispatch(clearError());
+  };
 
   return (
     <>
@@ -63,6 +74,11 @@ export const Registration: FC = () => {
           onChange={formik.handleChange}
           value={formik.values.confirmPassword}
         />
+        {error && (
+          <Alert severity="error" onClose={handleCloseError}>
+            {t(error)}
+          </Alert>
+        )}
         <Button
           disabled={!formik.isValid && !formik.isValidating}
           size="large"

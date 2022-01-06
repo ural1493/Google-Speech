@@ -20,7 +20,7 @@ export const loginSuccess = createAction(
 
 export const loginFail = createAction(
   LoginActionTypes.LOGIN_FAIL,
-  (errorMessage: string) => ({
-    payload: errorMessage,
+  (error: string) => ({
+    payload: error,
   }),
 );

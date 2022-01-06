@@ -8,7 +8,6 @@ import { rootReducer } from './reducers';
 const sagaMiddleware = createSagaMiddleware();
 const midlewares = [sagaMiddleware];
 
-//TODO configure store
 export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(...midlewares)),
@@ -16,4 +15,5 @@ export const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

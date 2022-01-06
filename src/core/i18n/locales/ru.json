@@ -1,0 +1,14 @@
+{
+  "registration": "регистрация",
+  "login": "авторизация",
+  "submit": "подтвердить",
+  "email": "email",
+  "password": "пароль",
+  "confirmPassword": "подтвердите пароль",
+  "invalidEmail": "невалидный email",
+  "invalidPassword": "невалидный пароль",
+  "passwordsDoNotMatch": "пароли не совпадают",
+  "registrate": "зарегистрироваться",
+  "auth/user-not-found": "пользователь не найден",
+  "auth/email-already-in-use": "email уже занят"
+}

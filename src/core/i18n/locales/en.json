@@ -1,0 +1,14 @@
+{
+  "registration": "registration",
+  "login": "login",
+  "submit": "submit",
+  "email": "email",
+  "password": "password",
+  "confirmPassword": "confirm password",
+  "invalidEmail": "invalid email",
+  "invalidPassword": "invalid password",
+  "passwordsDoNotMatch": "passwords do not match",
+  "registrate": "registrate",
+  "auth/user-not-found": "user not found",
+  "auth/email-already-in-use": "email already in use"
+}

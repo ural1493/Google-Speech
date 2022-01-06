@@ -40,6 +40,7 @@
     "react/prop-types": "off",
     "eol-last": ["error", "always"],
     "comma-dangle": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/default-param-last": "off"
   }
 }

@@ -15,6 +15,7 @@ import {
   registrationInit,
   registrationSuccess,
 } from '../actions/auth/registration';
+import { FirebaseError } from 'firebase/app';
 
 function* LoginWorker(action: ReturnType<typeof loginInit>) {
   try {
@@ -29,8 +30,10 @@ function* LoginWorker(action: ReturnType<typeof loginInit>) {
     );
 
     yield put(loginSuccess(user));
-  } catch (error) {
-    yield put(loginFail((error as Error).message));
+  } catch (error: FirebaseError | unknown) {
+    if (error instanceof FirebaseError) {
+      yield put(loginFail(error.code));
+    }
   }
 }
 
@@ -47,8 +50,10 @@ function* RegistrationWorker(action: ReturnType<typeof registrationInit>) {
     );
 
     yield put(registrationSuccess(user));
-  } catch (error) {
-    yield put(registrationFail((error as Error).message));
+  } catch (error: FirebaseError | unknown) {
+    if (error instanceof FirebaseError) {
+      yield put(registrationFail(error.code));
+    }
   }
 }
 

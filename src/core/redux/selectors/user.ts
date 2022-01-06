@@ -1,4 +1,4 @@
-import { User } from 'firebase/auth';
-import { RootState } from '../reducers';
+import { SelectUser, SelectUserError } from '../types/auth/user';
 
-export const selectUser = (state: RootState): User | null => state.auth.user;
+export const selectUser: SelectUser = (state) => state.auth.user;
+export const selectUserError: SelectUserError = (state) => state.auth.error;

@@ -51,6 +51,11 @@ export const authReducer = (
         isLoading: false,
         error: action.payload,
       };
+    case RegistrationActionTypes.CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

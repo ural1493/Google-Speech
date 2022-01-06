@@ -10,10 +10,15 @@ import { Heading } from '../../core/components/Heading/Heading';
 import { TextFiled } from '../../core/components/TextField/TextField';
 import { AuthLink } from '../../core/components/RegistrateLink/RegistrateLink';
 import { MainRoutes } from '../../core/constants/MainRouters';
+import { Alert } from '@mui/material';
+import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
+import { selectUserError } from '../../core/redux/selectors/user';
+import { clearError } from '../../core/redux/actions/auth/registration';
 
 export const Login: FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const error = useTypedSelector(selectUserError);
 
   const formik = useFormik({
     initialValues: {
@@ -26,6 +31,10 @@ export const Login: FC = () => {
       dispatch(loginInit(values));
     },
   });
+
+  const handleCloseError = () => {
+    dispatch(clearError());
+  };
 
   return (
     <>
@@ -53,6 +62,11 @@ export const Login: FC = () => {
           onChange={formik.handleChange}
           value={formik.values.password}
         />
+        {error && (
+          <Alert severity="error" onClose={handleCloseError}>
+            {t(error)}
+          </Alert>
+        )}
         <Button
           disabled={!formik.isValid && !formik.isValidating}
           size="large"

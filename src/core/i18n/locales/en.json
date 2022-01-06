@@ -13,5 +13,7 @@
   "startText": "Click on the words to hear them sound. Click on the button and speak the words into the microphone.",
   "restart": "restart",
   "speakPlease": "speak please",
-  "results": "results"
+  "results": "results",
+  "auth/user-not-found": "user not found",
+  "auth/email-already-in-use": "email already in use"
 }

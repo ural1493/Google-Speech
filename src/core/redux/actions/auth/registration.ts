@@ -22,7 +22,9 @@ export const registrationSuccess = createAction(
 
 export const registrationFail = createAction(
   RegistrationActionTypes.REGISTRATION_FAIL,
-  (errorMessage: string) => ({
-    payload: errorMessage,
+  (error: string) => ({
+    payload: error,
   }),
 );
+
+export const clearError = createAction(RegistrationActionTypes.CLEAR_ERROR);

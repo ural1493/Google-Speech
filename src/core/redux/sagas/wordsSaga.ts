@@ -14,19 +14,18 @@ import {
 import { Word } from '../../interfaces/words';
 import { AxiosResponse } from 'axios';
 import { AMOUNT_OF_WORDS } from '../../constants/app';
-import { selectWords } from '../selectors/words';
+import { selectGroup, selectWords } from '../selectors/words';
 import { getRandomPage } from '../../helpers/words';
 
-function* GetWordsWorker(
-  action: ReturnType<typeof getWords>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Generator<unknown, void, any> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function* GetWordsWorker(): Generator<unknown, void, any> {
   try {
     const randomPage = getRandomPage();
+    const group = yield select(selectGroup);
     const response: AxiosResponse<Word[]> = yield call(
       getWordsByPageAndGroup,
       randomPage,
-      action.payload,
+      group,
     );
     const words = shuffle(response.data).slice(0, AMOUNT_OF_WORDS);
 
@@ -42,9 +41,9 @@ function* AnsweredWordsWorker(
 ): Generator<unknown, void, any> {
   const { words, answeredWords, skippedWords }: ReturnType<typeof selectWords> =
     yield select(selectWords);
-  const wordToCheck = action.payload;
+  const wordToCheck = action.payload.split(' ').pop();
   const foundWord = words?.find(
-    (word) => word.word.toLowerCase() === wordToCheck.toLowerCase(),
+    (word) => word.word.toLowerCase() === wordToCheck?.toLowerCase(),
   );
 
   if (

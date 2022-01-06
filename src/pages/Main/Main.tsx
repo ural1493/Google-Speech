@@ -1,10 +1,11 @@
-import { FC, useEffect, useState, ChangeEvent } from 'react';
+import { FC, useEffect, useState, ChangeEvent, useCallback } from 'react';
 import { Button } from '../../core/components/Button/Button';
 import { ButtonContainer } from './styled/ButtonContainer';
 import { MainContainer } from './styled/MainContainer';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import {
+  checkWord,
   getWords,
   resetWords,
   setGroup,
@@ -14,25 +15,44 @@ import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
 import { ChosenImage } from './styled/ChosenImage';
 import { Word } from '../../core/components/Word/Word';
 import { Results } from '../../core/components/Results/Results';
-import { useSpeech } from '../../core/hooks/useSpeech';
 import { selectWords } from '../../core/redux/selectors/words';
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import {
+  CircularProgress,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from '@mui/material';
 import { groupCoefficients } from '../../core/constants/app';
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from 'react-speech-recognition';
 
 export const Main: FC = () => {
-  const { transcript, listening, handleStartListening, handleStopListening } =
-    useSpeech();
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [chosenImg, setChosenImg] = useState('');
   const [resultsIsOpen, setResultsIsOpen] = useState(false);
-
+  const groups = Object.keys(groupCoefficients);
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { words, answeredWords, skippedWords, group } =
+  const { words, answeredWords, skippedWords, group, isLoading } =
     useTypedSelector(selectWords);
 
   useEffect(() => {
     dispatch(getWords());
   }, [dispatch, group]);
+
+  const handleStartListening = () => {
+    resetTranscript();
+    SpeechRecognition.startListening({ language: 'en-US', continuous: true });
+  };
+
+  const handleStopListening = useCallback(() => {
+    SpeechRecognition.stopListening();
+  }, []);
+
+  useEffect(() => {
+    dispatch(checkWord(transcript));
+  }, [dispatch, transcript]);
 
   useEffect(() => {
     if (words && answeredWords) {
@@ -42,15 +62,27 @@ export const Main: FC = () => {
 
       if (skippedWordsAmount + answeredWordsAmount === AllWordsAmount) {
         handleStopListening();
+        resetTranscript();
         setResultsIsOpen(true);
       }
     }
-  }, [answeredWords, words, skippedWords, handleStopListening]);
+  }, [
+    answeredWords,
+    words,
+    skippedWords,
+    handleStopListening,
+    resetTranscript,
+  ]);
+
+  const handleReset = () => {
+    resetTranscript();
+    dispatch(resetWords());
+    dispatch(getWords());
+  };
 
   const handleClose = () => {
     setResultsIsOpen(false);
-    dispatch(resetWords());
-    dispatch(getWords());
+    handleReset();
   };
 
   const handleSkipWord = (id: string, e: ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +90,7 @@ export const Main: FC = () => {
   };
 
   const handleChangeCategory = (event: SelectChangeEvent) => {
-    dispatch(setGroup(+event.target));
+    dispatch(setGroup(+event.target.value));
   };
 
   return (
@@ -66,10 +98,10 @@ export const Main: FC = () => {
       <div>
         <Select
           onChange={handleChangeCategory}
-          defaultValue={Object.keys(groupCoefficients)[0]}
+          defaultValue={groups[0]}
           label="category"
         >
-          {Object.keys(groupCoefficients).map((category) => (
+          {groups.map((category) => (
             <MenuItem value={category} key={category}>{`category ${
               +category + 1
             }`}</MenuItem>
@@ -79,9 +111,12 @@ export const Main: FC = () => {
       <ChosenImage imageUrl={chosenImg} />
 
       <div>{listening ? 'on' : 'off'}</div>
-      <div>{transcript}</div>
+      <div>{transcript.split(' ').pop()}</div>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {words &&
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          words &&
           words.map(({ word, transcription, id, audio, image }) => (
             <Word
               key={id}
@@ -94,13 +129,13 @@ export const Main: FC = () => {
               onSkipWord={handleSkipWord}
               isAnswered={answeredWords.includes(id)}
             />
-          ))}
+          ))
+        )}
       </div>
       <ButtonContainer>
-        <Button>{t('restart')}</Button>
+        <Button onClick={handleReset}>{t('restart')}</Button>
         <Button onClick={handleStartListening}>{t('speakPlease')}</Button>
         <Button>{t('results')}</Button>
-        <button onClick={handleStopListening}>STOP</button>
       </ButtonContainer>
       <Results
         onClose={handleClose}

@@ -11,7 +11,7 @@ import { validate } from './validation';
 import { Button } from '../../core/components/Button/Button';
 import { Heading } from '../../core/components/Heading/Heading';
 import { TextFiled } from '../../core/components/TextField/TextField';
-import { AuthLink } from '../../core/components/RegistrateLink/RegistrateLink';
+import { AuthLink } from '../../core/components/AuthLink/AuthLink';
 import { MainRoutes } from '../../core/constants/MainRouters';
 import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
 import { selectUserError } from '../../core/redux/selectors/user';

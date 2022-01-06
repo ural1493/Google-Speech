@@ -1,4 +1,6 @@
-import { SelectUser, SelectUserError } from '../types/auth/user';
+import { User } from '@firebase/auth';
+import { RootState } from '../store';
 
-export const selectUser: SelectUser = (state) => state.auth.user;
-export const selectUserError: SelectUserError = (state) => state.auth.error;
+export const selectUser = (state: RootState): User | null => state.auth.user;
+export const selectUserError = (state: RootState): string | null =>
+  state.auth.error;

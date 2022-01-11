@@ -11,7 +11,7 @@ export const ChosenImage: FC<ChosenImageProps> = ({ imageUrl }) => {
     <div>
       <img
         width={400}
-        src={!imageUrl ? startImage : `${url.IMAGES}${imageUrl}`}
+        src={!imageUrl ? startImage : `${url.DATA}${imageUrl}`}
         alt=""
       />
     </div>

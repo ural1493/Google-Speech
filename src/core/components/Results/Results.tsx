@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Word } from '../Word/Word';
 import { Modal } from '@mui/material';
 import { Word as WordType } from '../../interfaces/words';
+import { ModalContainer } from './styled/ModalContainer';
 
 interface ResultsProps {
   onClose: () => void;
@@ -18,17 +19,7 @@ export const Results: FC<ResultsProps> = ({
 }) => {
   return (
     <Modal open={isOpen} onClose={onClose}>
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          backgroundColor: 'white',
-          display: 'flex',
-          flexWrap: 'wrap',
-        }}
-      >
+      <ModalContainer>
         <div>RIGHT:</div>
         {words &&
           words
@@ -53,7 +44,7 @@ export const Results: FC<ResultsProps> = ({
                 audio={audio}
               />
             ))}
-      </div>
+      </ModalContainer>
     </Modal>
   );
 };

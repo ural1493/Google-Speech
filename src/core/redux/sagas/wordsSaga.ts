@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { call, put, select, StrictEffect, takeEvery } from 'redux-saga/effects';
 import { getWordsByPageAndGroup } from '../../api';
 import shuffle from 'lodash.shuffle';
 import {
@@ -13,20 +13,23 @@ import {
 } from '../actions/words/words';
 import { Word } from '../../interfaces/words';
 import { AxiosResponse } from 'axios';
-import { AMOUNT_OF_WORDS } from '../../constants/app';
+import { AMOUNT_OF_WORDS, MAX_PAGE } from '../../constants/app';
 import { selectGroup, selectWords } from '../selectors/words';
-import { getRandomPage } from '../../helpers/words';
+import { compareWords, getLastWord, getRandomPage } from '../../helpers/words';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function* GetWordsWorker(): Generator<unknown, void, any> {
+function* GetWordsWorker(): Generator<
+  StrictEffect,
+  void,
+  AxiosResponse<Word[]> | number
+> {
   try {
-    const randomPage = getRandomPage();
-    const group = yield select(selectGroup);
-    const response: AxiosResponse<Word[]> = yield call(
+    const randomPage = getRandomPage(MAX_PAGE);
+    const group = (yield select(selectGroup)) as number;
+    const response: AxiosResponse<Word[]> = (yield call(
       getWordsByPageAndGroup,
       randomPage,
       group,
-    );
+    )) as AxiosResponse<Word[]>;
     const words = shuffle(response.data).slice(0, AMOUNT_OF_WORDS);
 
     yield put(getWordsSuccess(words));
@@ -37,14 +40,11 @@ function* GetWordsWorker(): Generator<unknown, void, any> {
 
 function* AnsweredWordsWorker(
   action: ReturnType<typeof checkWord>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Generator<unknown, void, any> {
+): Generator<StrictEffect, void, ReturnType<typeof selectWords>> {
   const { words, answeredWords, skippedWords }: ReturnType<typeof selectWords> =
-    yield select(selectWords);
-  const wordToCheck = action.payload.split(' ').pop();
-  const foundWord = words?.find(
-    (word) => word.word.toLowerCase() === wordToCheck?.toLowerCase(),
-  );
+    (yield select(selectWords)) as ReturnType<typeof selectWords>;
+  const wordToCheck = getLastWord(action.payload);
+  const foundWord = words?.find(compareWords(wordToCheck));
 
   if (
     foundWord &&

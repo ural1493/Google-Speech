@@ -11,11 +11,13 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../core/firebase';
 import { useTranslation } from 'react-i18next';
 
-const handleLogout = () => {
-  signOut(auth);
-};
 export const Start: FC = () => {
   const { t } = useTranslation();
+
+  const handleLogout = () => {
+    signOut(auth);
+  };
+
   return (
     <StartContainer>
       <StartHeader onClick={handleLogout}>SPEAKIT</StartHeader>

@@ -15,5 +15,7 @@
   "speakPlease": "speak please",
   "results": "results",
   "auth/user-not-found": "user not found",
-  "auth/email-already-in-use": "email already in use"
+  "auth/email-already-in-use": "email already in use",
+  "on": "on",
+  "off": "off"
 }

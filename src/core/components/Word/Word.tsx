@@ -4,6 +4,7 @@ import { WordContainer } from './WordContainer';
 import { TextContainer } from './TextContainer';
 import { url } from '../../constants/urls';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import { playAudio } from '../../helpers/words';
 
 interface WordProps {
   id?: string;
@@ -16,8 +17,6 @@ interface WordProps {
   onSkipWord?: (id: string, e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const audioComponent = new Audio();
-
 export const Word: FC<WordProps> = ({
   id,
   word,
@@ -29,8 +28,7 @@ export const Word: FC<WordProps> = ({
   isAnswered,
 }) => {
   const handleClick = () => {
-    audioComponent.src = `${url.DATA}${audio}`;
-    audioComponent.play();
+    playAudio(`${url.DATA}${audio}`);
 
     if (onImageChange && image) {
       onImageChange(image);

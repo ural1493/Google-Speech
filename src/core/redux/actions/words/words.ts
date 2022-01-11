@@ -25,26 +25,26 @@ export const checkWord = createAction(
 
 export const addWordToAnswered = createAction(
   WordsActionTypes.ADD_WORD_TO_ANSWERED,
-  (id: Word['id']) => ({ payload: id }),
+  (id: string) => ({ payload: id }),
 );
 
 export const setSkippedWords = createAction(
   WordsActionTypes.SET_SKIPPED_WORDS,
-  (id: Word['id'], isSkipped: boolean) => ({
+  (id: string, isSkipped: boolean) => ({
     payload: { id, isSkipped },
   }),
 );
 
 export const addToSkipped = createAction(
   WordsActionTypes.ADD_TO_SKIPPED,
-  (id: Word['id']) => ({
+  (id: string) => ({
     payload: id,
   }),
 );
 
 export const removeFromSkipped = createAction(
   WordsActionTypes.REMOVE_FROM_SKIPPED,
-  (id: Word['id']) => ({
+  (id: string) => ({
     payload: id,
   }),
 );

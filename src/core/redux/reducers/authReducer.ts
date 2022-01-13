@@ -24,6 +24,7 @@ export type AuthActions =
   | UserActionLoginTypes;
 
 export const authReducer = (
+  // eslint-disable-next-line @typescript-eslint/default-param-last
   state = defaultState,
   action: AuthActions,
 ): UserState => {

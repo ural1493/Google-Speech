@@ -8,8 +8,9 @@ export const Button = styled(ButtonComponent)`
     &:hover {
       background-color: ${(props) => props.theme.palette.primary.mainDark};
     }
+    color: ${(props) => props.theme.palette.text.secondary};
     font-size: 2.5rem;
-
+    max-width: 200px;
     ${MediaQueries.DesktopLarge} {
       font-size: 2rem;
     }

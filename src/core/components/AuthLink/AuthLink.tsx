@@ -1,14 +1,17 @@
-import { MainRoutes } from '../../constants/MainRouters';
 import { Button } from '@mui/material';
 import { Link } from './styled/Link';
 import { FlexContainer } from './styled/FlexContainter';
 import { FC } from 'react';
 
-export const RegistrateLink: FC = ({ children }) => {
+interface AuthLinkProps {
+  to: string;
+}
+
+export const AuthLink: FC<AuthLinkProps> = ({ to, children }) => {
   return (
     <FlexContainer>
       <Button>
-        <Link to={MainRoutes.Register}>{children}</Link>
+        <Link to={to}>{children}</Link>
       </Button>
     </FlexContainer>
   );

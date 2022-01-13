@@ -8,7 +8,8 @@ import { validate } from './validation';
 import { Button } from '../../core/components/Button/Button';
 import { Heading } from '../../core/components/Heading/Heading';
 import { TextFiled } from '../../core/components/TextField/TextField';
-import { RegistrateLink } from '../../core/components/RegistrateLink/RegistrateLink';
+import { AuthLink } from '../../core/components/AuthLink/AuthLink';
+import { MainRoutes } from '../../core/constants/MainRouters';
 import { Alert } from '@mui/material';
 import { useTypedSelector } from '../../core/hooks/typedReduxHooks';
 import { selectUserError } from '../../core/redux/selectors/user';
@@ -40,7 +41,7 @@ export const Login: FC = () => {
       <Heading align="center" variant="h2">
         {t('login')}
       </Heading>
-      <RegistrateLink>{t('registrate')}</RegistrateLink>
+      <AuthLink to={MainRoutes.Register}>{t('registrate')}</AuthLink>
       <AuthForm onSubmit={formik.handleSubmit}>
         <TextFiled
           required

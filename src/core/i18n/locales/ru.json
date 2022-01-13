@@ -9,6 +9,13 @@
   "invalidPassword": "невалидный пароль",
   "passwordsDoNotMatch": "пароли не совпадают",
   "registrate": "зарегистрироваться",
+  "start": "начать",
+  "startText": "Кликните на слово, чтоб услышать звук. Кликните на кнопку и произносите слова в микрофон.",
+  "restart": "заново",
+  "speakPlease": "пожалуйста говорите",
+  "results": "результаты",
   "auth/user-not-found": "пользователь не найден",
-  "auth/email-already-in-use": "email уже занят"
+  "auth/email-already-in-use": "email уже занят",
+  "on": "включен",
+  "off": "выключен"
 }

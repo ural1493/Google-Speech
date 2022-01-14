@@ -11,6 +11,7 @@ import {
   resetWords,
   setGroup,
   setSkippedWords,
+  updateUserWords,
 } from '../redux/actions/words/words';
 import { selectWords } from '../redux/selectors/words';
 import { useTypedSelector } from './typedReduxHooks';
@@ -37,11 +38,11 @@ export const useSpeech = (): UseSpeechReturn => {
 
   useEffect(() => {
     if (words && answeredWords) {
-      const skippedWordsAmount = skippedWords.length;
-      const answeredWordsAmount = answeredWords.length;
-      const AllWordsAmount = words.length;
+      const isGameOver =
+        skippedWords.length + answeredWords.length === words.length;
 
-      if (skippedWordsAmount + answeredWordsAmount === AllWordsAmount) {
+      if (isGameOver) {
+        dispatch(updateUserWords);
         handleStopListening();
         resetTranscript();
         setResultsIsOpen(true);
@@ -53,6 +54,7 @@ export const useSpeech = (): UseSpeechReturn => {
     skippedWords,
     handleStopListening,
     resetTranscript,
+    dispatch,
   ]);
 
   const handleReset = () => {

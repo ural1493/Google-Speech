@@ -28,7 +28,7 @@ export const Word: FC<WordProps> = ({
   isAnswered,
 }) => {
   const handleClick = () => {
-    playAudio(`${url.DATA}${audio}`);
+    playAudio(`${url.ASSETS}${audio}`);
 
     if (onImageChange && image) {
       onImageChange(image);

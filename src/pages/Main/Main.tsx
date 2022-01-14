@@ -10,14 +10,16 @@ import { Word } from '../../core/components/Word/Word';
 import { Results } from '../../core/components/Results/Results';
 import { CircularProgress, MenuItem, Select } from '@mui/material';
 import { groupCoefficients } from '../../core/constants/app';
-import { getLastWord } from '../../core/helpers/words';
+import { getLastWordFromString } from '../../core/helpers/words';
 import { useSpeech } from '../../core/hooks/useSpeech';
+import { useNavigate } from 'react-router-dom';
+import { MainRoutes } from '../../core/constants/MainRouters';
 
 export const Main: FC = () => {
   const [chosenImg, setChosenImg] = useState('');
-  const groups = Object.keys(groupCoefficients);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     transcript,
@@ -38,17 +40,21 @@ export const Main: FC = () => {
     dispatch(getWords());
   }, [dispatch, group]);
 
+  const handleRedirectToStatistics = () => {
+    navigate(MainRoutes.Statistics);
+  };
+
   return (
     <MainContainer>
       <div>
         <Select
           onChange={handleChangeCategory}
-          defaultValue={groups[0]}
+          defaultValue={'0'}
           label="category"
         >
-          {groups.map((category) => (
-            <MenuItem value={category} key={category}>{`category ${
-              Number(category) + 1
+          {groupCoefficients.map((coefficient, index) => (
+            <MenuItem value={index} key={coefficient}>{`category ${
+              Number(index) + 1
             }`}</MenuItem>
           ))}
         </Select>
@@ -56,7 +62,7 @@ export const Main: FC = () => {
       <ChosenImage imageUrl={chosenImg} />
 
       <div>{listening ? t('on') : t('off')}</div>
-      <div>{getLastWord(transcript)}</div>
+      <div>{getLastWordFromString(transcript)}</div>
       <div>
         {isLoading ? (
           <CircularProgress />
@@ -80,7 +86,7 @@ export const Main: FC = () => {
       <ButtonContainer>
         <Button onClick={handleReset}>{t('restart')}</Button>
         <Button onClick={handleStartListening}>{t('speakPlease')}</Button>
-        <Button>{t('results')}</Button>
+        <Button onClick={handleRedirectToStatistics}>{t('results')}</Button>
       </ButtonContainer>
       <Results
         onClose={handleClose}

@@ -38,8 +38,8 @@ export const useSpeech = (): UseSpeechReturn => {
 
   useEffect(() => {
     if (words && answeredWords) {
-      const isGameOver =
-        skippedWords.length + answeredWords.length === words.length;
+      const activeWords = skippedWords.length + answeredWords.length;
+      const isGameOver = activeWords === words.length;
 
       if (isGameOver) {
         dispatch(updateUserWords);

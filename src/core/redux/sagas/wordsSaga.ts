@@ -1,5 +1,5 @@
 import { call, put, select, StrictEffect, takeEvery } from 'redux-saga/effects';
-import { getWordsByPageAndGroup } from '../../api';
+import { calculateStatisticsScore, getWordsByPageAndGroup } from '../../api';
 import shuffle from 'lodash.shuffle';
 import {
   getWords,
@@ -84,7 +84,7 @@ function* SkippedWordsWorker(
 }
 
 function* UpdateUserWordsWorker(): Generator<
-  unknown,
+  StrictEffect,
   void,
   | ReturnType<typeof selectWords>
   | ReturnType<typeof selectUser>
@@ -96,8 +96,8 @@ function* UpdateUserWordsWorker(): Generator<
   const user = (yield select(selectUser)) as ReturnType<typeof selectUser>;
   if (!user) return;
 
-  const right = answeredWords.length;
-  const wrong = skippedWords.length;
+  const rightAnswersAmount = answeredWords.length;
+  const wrongAnswersAmount = skippedWords.length;
 
   const docRef = doc(db, DbCollections.users, user.uid);
   const docSnapshot = (yield call(getDoc, docRef)) as DocumentSnapshot;
@@ -106,13 +106,17 @@ function* UpdateUserWordsWorker(): Generator<
     const data = docSnapshot.data() as UserData;
 
     const score = data.score;
-    const prevRight = data.groups[group].right;
-    const prevWrong = data.groups[group].wrong;
+    const prevRightAnswersAmount = data.groups[group].right;
+    const prevWrongAnswersAmount = data.groups[group].wrong;
 
-    data.groups[group].right = right + prevRight;
-    data.groups[group].wrong = wrong + prevWrong;
-    data.score = score + right * groupCoefficients[group];
+    data.groups[group].right = rightAnswersAmount + prevRightAnswersAmount;
+    data.groups[group].wrong = wrongAnswersAmount + prevWrongAnswersAmount;
     data.date = Timestamp.fromDate(new Date());
+    data.score = calculateStatisticsScore(
+      score,
+      rightAnswersAmount,
+      groupCoefficients[group],
+    );
 
     yield call(setDoc, docRef, data, { merge: true });
   }

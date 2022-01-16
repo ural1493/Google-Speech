@@ -7,7 +7,7 @@ export interface Answers {
 
 export interface UserData {
   id: string;
-  email: string | null;
+  email: string;
   date: Timestamp;
   score: number;
   groups: Answers[];

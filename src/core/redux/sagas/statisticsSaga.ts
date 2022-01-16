@@ -25,7 +25,9 @@ function* StatisticsWorker(): Generator<StrictEffect, void, QuerySnapshot> {
     )) as QuerySnapshot;
 
     usersSnapshot.forEach((doc: QueryDocumentSnapshot) => {
-      if (doc.exists()) users.push(doc.data() as UserData);
+      if (doc.exists()) {
+        users.push(doc.data() as UserData);
+      }
     });
 
     yield put(getUsersStatisticsSuccess(users));

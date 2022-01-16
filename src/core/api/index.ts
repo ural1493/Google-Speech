@@ -8,3 +8,11 @@ export const getWordsByPageAndGroup = async (
 ): Promise<AxiosResponse<Word[]>> => {
   return axios.get(`${url.WORDS}?page=${page}&group=${group}`);
 };
+
+export const calculateStatisticsScore = (
+  score: number,
+  rightAnswersCount: number,
+  groupCoefficient: number,
+): number => {
+  return score + rightAnswersCount * groupCoefficient;
+};

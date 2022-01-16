@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { takeEvery, put, call } from 'redux-saga/effects';
 import {
   signInWithEmailAndPassword,
@@ -23,13 +22,13 @@ import { groupCoefficients } from '../../constants/app';
 import { UserData } from '../../interfaces/db';
 import { DbCollections } from '../../constants/db';
 
-function* CreateUserInDb(user: User): Generator<unknown, void, any> {
+function* CreateUserInDb(user: User) {
   const { uid, email } = user;
   const docRef = doc(db, DbCollections.users, uid);
 
   const data: UserData = {
     id: uid,
-    email,
+    email: email ? email : '',
     date: Timestamp.fromDate(new Date()),
     score: 0,
     groups: groupCoefficients.map(() => ({
@@ -38,7 +37,7 @@ function* CreateUserInDb(user: User): Generator<unknown, void, any> {
     })),
   };
 
-  yield call(<any>setDoc, docRef, data);
+  yield call(<never>setDoc, docRef, data);
 }
 
 function* LoginWorker(action: ReturnType<typeof loginInit>) {

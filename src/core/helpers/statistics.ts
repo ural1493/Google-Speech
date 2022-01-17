@@ -9,11 +9,7 @@ export const formatDateFromTimestamp = (timestamp: Timestamp): string => {
   return `${formatedDate}, ${formatedTime}`;
 };
 
-function descendingComparator(
-  a: UserData,
-  b: UserData,
-  orderBy: keyof UserData,
-) {
+function descSorting(a: UserData, b: UserData, orderBy: keyof UserData) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -23,11 +19,11 @@ function descendingComparator(
   return 0;
 }
 
-export function getComparator(
+export function sortUserData(
   order: OrderType,
   orderBy: keyof UserData,
 ): (a: UserData, b: UserData) => number {
   return order === 'desc'
-    ? (a: UserData, b: UserData) => descendingComparator(a, b, orderBy)
-    : (a: UserData, b: UserData) => -descendingComparator(a, b, orderBy);
+    ? (a: UserData, b: UserData) => descSorting(a, b, orderBy)
+    : (a: UserData, b: UserData) => -descSorting(a, b, orderBy);
 }

@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Word } from '../Word/Word';
+import { Word } from '../../../core/components/Word/Word';
 import { Modal } from '@mui/material';
-import { Word as WordType } from '../../interfaces/words';
-import { ModalContainer } from './styled/ModalContainer';
+import { Word as WordType } from '../../../core/interfaces/words';
+import { ModalContainer } from '../../../core/components/ModalContainer.ts/ModalContainer';
 
 interface ResultsProps {
   onClose: () => void;

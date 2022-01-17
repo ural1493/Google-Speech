@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import {
   Table,
   TableCell,
@@ -16,7 +16,7 @@ import { selectUsersStatistics } from '../../core/redux/selectors/statistics';
 import { UserData } from '../../core/interfaces/db';
 import { useTranslation } from 'react-i18next';
 import { OrderType } from '../../core/interfaces/statistics';
-import { StatisticsTableBody } from '../../core/components/StatisticsTableBody/StatisticsTableBody';
+import { StatisticsTableBody } from './components/StatisticsTableBody';
 
 export const Statistics: FC = () => {
   const dispatch = useDispatch();
@@ -36,31 +36,26 @@ export const Statistics: FC = () => {
     dispatch(getUsersStatistics());
   }, [dispatch]);
 
-  const headerCells = useMemo(
-    () => [
-      {
-        id: '',
-        label: '№',
-      },
-      {
-        id: 'email',
-        label: t('email'),
-      },
-      {
-        id: 'date',
-        label: t('date'),
-      },
-      {
-        id: 'score',
-        label: t('score'),
-      },
-    ],
-    [t],
-  );
+  const headerCells = [
+    {
+      id: '',
+      label: '№',
+    },
+    {
+      id: 'email',
+      label: t('email'),
+    },
+    {
+      id: 'date',
+      label: t('date'),
+    },
+    {
+      id: 'score',
+      label: t('score'),
+    },
+  ];
 
-  const sortableHeadearCells = useMemo(() => {
-    return headerCells.slice(1);
-  }, [headerCells]);
+  const sortableHeaderCells = headerCells.slice(1);
 
   return (
     <TableContainer component={Paper}>
@@ -68,7 +63,7 @@ export const Statistics: FC = () => {
         <TableHead>
           <TableRow>
             <TableCell>{headerCells[0].label}</TableCell>
-            {sortableHeadearCells.map(({ id, label }) => (
+            {sortableHeaderCells.map(({ id, label }) => (
               <TableCell
                 key={id}
                 align="center"

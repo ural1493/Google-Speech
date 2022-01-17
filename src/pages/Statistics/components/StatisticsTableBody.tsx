@@ -1,10 +1,10 @@
 import { TableBody, TableCell, TableRow } from '@mui/material';
 import {
   formatDateFromTimestamp,
-  getComparator,
-} from '../../helpers/statistics';
-import { UserData } from '../../interfaces/db';
-import { OrderType } from '../../interfaces/statistics';
+  sortUserData,
+} from '../../../core/helpers/statistics';
+import { UserData } from '../../../core/interfaces/db';
+import { OrderType } from '../../../core/interfaces/statistics';
 import { FC } from 'react';
 
 interface StatisticsTableBodyProps {
@@ -23,7 +23,7 @@ export const StatisticsTableBody: FC<StatisticsTableBodyProps> = ({
       {usersStatistics &&
         usersStatistics
           .slice()
-          .sort(getComparator(order, orderBy))
+          .sort(sortUserData(order, orderBy))
           .map((user, index) => (
             <TableRow key={user.id}>
               <TableCell align="center">{index + 1}</TableCell>

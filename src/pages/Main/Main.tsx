@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { getWords } from '../../core/redux/actions/words/words';
 import { ChosenImage } from './styled/ChosenImage';
 import { Word } from '../../core/components/Word/Word';
-import { Results } from '../../core/components/Results/Results';
+import { Results } from './components/Results';
 import { CircularProgress, MenuItem, Select } from '@mui/material';
 import { groupCoefficients } from '../../core/constants/app';
 import { getLastWordFromString } from '../../core/helpers/words';

@@ -9,6 +9,7 @@ import {
   removeFromSkipped,
   setGroup,
   resetWords,
+  updateUserWords,
 } from '../../actions/words/words';
 
 export enum WordsActionTypes {
@@ -22,6 +23,7 @@ export enum WordsActionTypes {
   REMOVE_FROM_SKIPPED = 'REMOVE_FROM_SKIPPED',
   SET_GROUP = 'SET_GROUP',
   RESET_WORDS = 'RESET_WORDS',
+  UPDATE_USER_WORDS = 'UPDATE_USER_WORDS',
 }
 
 export type WordAction = ReturnType<
@@ -35,4 +37,5 @@ export type WordAction = ReturnType<
   | typeof removeFromSkipped
   | typeof setGroup
   | typeof resetWords
+  | typeof updateUserWords
 >;

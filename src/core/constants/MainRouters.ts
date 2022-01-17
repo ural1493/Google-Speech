@@ -3,4 +3,5 @@ export enum MainRoutes {
   Start = '/start',
   Login = '/login',
   Register = '/registration',
+  Statistics = '/statistics',
 }

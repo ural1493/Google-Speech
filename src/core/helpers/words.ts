@@ -14,5 +14,5 @@ export const compareWords =
   (word: Word): boolean =>
     word.word.toLowerCase() === wordToCheck?.toLowerCase();
 
-export const getLastWord = (words: string): string | undefined =>
+export const getLastWordFromString = (words: string): string | undefined =>
   words.split(' ').pop();

@@ -57,3 +57,5 @@ export const setGroup = createAction(
 );
 
 export const resetWords = createAction(WordsActionTypes.RESET_WORDS);
+
+export const updateUserWords = createAction(WordsActionTypes.UPDATE_USER_WORDS);

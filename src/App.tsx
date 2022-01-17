@@ -11,6 +11,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './core/theme';
 import { useDispatch } from 'react-redux';
 import { RequireAuth } from './core/components/RequireAuth/RequireAuth';
+import { Statistics } from './pages/Statistics/Statistics';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,14 @@ const App: React.FC = () => {
           element={
             <RequireAuth redirectTo={MainRoutes.Login}>
               <Start />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path={MainRoutes.Statistics}
+          element={
+            <RequireAuth redirectTo={MainRoutes.Login}>
+              <Statistics />
             </RequireAuth>
           }
         />

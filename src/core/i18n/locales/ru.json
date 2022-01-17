@@ -17,5 +17,7 @@
   "auth/user-not-found": "пользователь не найден",
   "auth/email-already-in-use": "email уже занят",
   "on": "включен",
-  "off": "выключен"
+  "off": "выключен",
+  "date": "дата",
+  "score": "счет"
 }

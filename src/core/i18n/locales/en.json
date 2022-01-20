@@ -19,5 +19,10 @@
   "on": "on",
   "off": "off",
   "date": "date",
-  "score": "score"
+  "score": "score",
+  "skip": "skip",
+  "back": "back to game",
+  "right": "right :",
+  "wrong": "wrong :",
+  "logout": "logout"
 }

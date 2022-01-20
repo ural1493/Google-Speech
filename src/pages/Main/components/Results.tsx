@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { Word } from '../../../core/components/Word/Word';
-import { Modal } from '@mui/material';
+import { Modal, Typography } from '@mui/material';
 import { Word as WordType } from '../../../core/interfaces/words';
 import { ModalContainer } from '../../../core/components/ModalContainer.ts/ModalContainer';
+import { useTranslation } from 'react-i18next';
 
 interface ResultsProps {
   onClose: () => void;
@@ -17,10 +18,12 @@ export const Results: FC<ResultsProps> = ({
   words,
   rightAnswers,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Modal open={isOpen} onClose={onClose}>
       <ModalContainer>
-        <div>RIGHT:</div>
+        <Typography>{t('right')}</Typography>
         {words &&
           words
             .filter(({ id }) => rightAnswers.includes(id))
@@ -32,7 +35,7 @@ export const Results: FC<ResultsProps> = ({
                 audio={audio}
               />
             ))}
-        <div>WRONG:</div>
+        <Typography>{t('wrong')}</Typography>
         {words &&
           words
             .filter(({ id }) => !rightAnswers.includes(id))

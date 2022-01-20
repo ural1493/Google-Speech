@@ -3,6 +3,7 @@ export const theme = {
     primary: {
       main: '#00c49d',
       mainDark: '#00c2b2',
+      backgroundLight: 'rgba(0, 173, 159, .15)',
     },
     text: {
       main: '#000',

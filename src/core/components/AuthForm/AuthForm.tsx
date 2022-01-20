@@ -2,20 +2,18 @@ import styled from 'styled-components';
 import { MediaQueries } from '../../constants/mediaQueries';
 
 export const AuthForm = styled.form`
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4rem;
-  margin-top: 4rem;
+  gap: 60px;
+  margin-top: 30px;
 
   ${MediaQueries.DesktopLarge} {
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 40px;
+    margin-top: 20px;
   }
   ${MediaQueries.Laptop} {
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 20px;
   }
 `;

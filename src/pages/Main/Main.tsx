@@ -5,15 +5,21 @@ import { MainContainer } from './styled/MainContainer';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { getWords } from '../../core/redux/actions/words/words';
-import { ChosenImage } from './styled/ChosenImage';
+import { ChosenImage } from './components/ChosenImage';
 import { Word } from '../../core/components/Word/Word';
 import { Results } from './components/Results';
-import { CircularProgress, MenuItem, Select } from '@mui/material';
+import { CircularProgress, MenuItem, Select, Typography } from '@mui/material';
 import { groupCoefficients } from '../../core/constants/app';
 import { getLastWordFromString } from '../../core/helpers/words';
 import { useSpeech } from '../../core/hooks/useSpeech';
 import { useNavigate } from 'react-router-dom';
 import { MainRoutes } from '../../core/constants/MainRouters';
+import { WordsContainer } from './styled/WordsContainer';
+import MicIcon from '@mui/icons-material/Mic';
+import { TranscriptContainer } from './styled/TranscriptContainer';
+import { Dropdown } from './styled/Dropdown';
+import { MainHeader } from './styled/MainHeader';
+import { Account } from './components/Account';
 
 export const Main: FC = () => {
   const [chosenImg, setChosenImg] = useState('');
@@ -46,26 +52,30 @@ export const Main: FC = () => {
 
   return (
     <MainContainer>
-      <div>
-        <Select
-          onChange={handleChangeCategory}
-          defaultValue={'0'}
-          label="category"
-        >
-          {groupCoefficients.map((coefficient, index) => (
-            <MenuItem value={index} key={coefficient}>{`category ${
-              Number(index) + 1
-            }`}</MenuItem>
-          ))}
-        </Select>
-      </div>
+      <MainHeader>
+        <Dropdown>
+          <Select
+            onChange={handleChangeCategory}
+            defaultValue={'0'}
+            label="category"
+          >
+            {groupCoefficients.map((coefficient, index) => (
+              <MenuItem value={index} key={coefficient}>{`category ${
+                Number(index) + 1
+              }`}</MenuItem>
+            ))}
+          </Select>
+        </Dropdown>
+        <Account />
+      </MainHeader>
       <ChosenImage imageUrl={chosenImg} />
-
-      <div>{listening ? t('on') : t('off')}</div>
-      <div>{getLastWordFromString(transcript)}</div>
-      <div>
+      <TranscriptContainer>
+        <MicIcon color={listening ? 'success' : 'disabled'} fontSize="large" />
+        <Typography>{getLastWordFromString(transcript)}</Typography>
+      </TranscriptContainer>
+      <WordsContainer>
         {isLoading ? (
-          <CircularProgress />
+          <CircularProgress size={100} />
         ) : (
           words &&
           words.map(({ word, transcription, id, audio, image }) => (
@@ -82,7 +92,7 @@ export const Main: FC = () => {
             />
           ))
         )}
-      </div>
+      </WordsContainer>
       <ButtonContainer>
         <Button onClick={handleReset}>{t('restart')}</Button>
         <Button onClick={handleStartListening}>{t('speakPlease')}</Button>

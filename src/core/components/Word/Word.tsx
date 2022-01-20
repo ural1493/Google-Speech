@@ -1,10 +1,11 @@
 import { ChangeEvent, FC } from 'react';
-import { Typography } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import { WordContainer } from './WordContainer';
 import { TextContainer } from './TextContainer';
 import { url } from '../../constants/urls';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import { playAudio } from '../../helpers/words';
+import { t } from 'i18next';
 
 interface WordProps {
   id?: string;
@@ -42,17 +43,15 @@ export const Word: FC<WordProps> = ({
   };
 
   return (
-    <WordContainer onClick={handleClick}>
+    <WordContainer onClick={handleClick} isAnswered={isAnswered}>
       <VolumeUpIcon />
       <TextContainer>
-        {isAnswered && 'молодчик'}
-        <input
-          type="checkbox"
-          defaultChecked={false}
-          onChange={handleSkipWord}
-        />
         <Typography>{word}</Typography>
         <Typography>{transcription}</Typography>
+        <FormControlLabel
+          label={t('skip') as string}
+          control={<Checkbox onChange={handleSkipWord} />}
+        />
       </TextContainer>
     </WordContainer>
   );

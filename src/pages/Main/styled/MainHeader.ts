@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { MediaQueries } from '../../../core/constants/mediaQueries';
 
-export const ButtonContainer = styled.div`
+export const MainHeader = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
 
   ${MediaQueries.Mobile} {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `;

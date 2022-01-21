@@ -14,10 +14,11 @@ export const WordContainer = styled.div<WordContainerProps>`
   border: 1px solid ${(props) => props.theme.palette.border.wordContainer};
   border-radius: 5px;
   transition: 0.3s;
-  width: 200px;
 
   background-color: ${(props) =>
-    props.isAnswered ? props.theme.palette.primary.backgroundLight : 'white'};
+    props.isAnswered
+      ? props.theme.palette.primary.backgroundLight
+      : props.theme.palette.primary.backgroundWhite};
 
   &:hover {
     cursor: pointer;

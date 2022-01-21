@@ -13,16 +13,8 @@ export const Button = styled(ButtonComponent)`
     padding: 15px 20px;
 
     ${MediaQueries.DesktopLarge} {
-      font-size: 2rem;
-    }
-
-    ${MediaQueries.Desktop} {
-      font-size: 1.5rem;
+      font-size: 1rem;
       padding: 10px 15px;
-    }
-
-    ${MediaQueries.Laptop} {
-      font-size: 1.2rem;
     }
   }
 `;

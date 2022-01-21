@@ -10,21 +10,13 @@ export const Heading = styled(Typography)`
     ${(props) => props.theme.palette.boxShadowColor.heading};
 
   &.MuiTypography-root {
-    font-size: 6rem;
+    font-size: 4rem;
     padding: 40px;
     margin-bottom: 20px;
 
     ${MediaQueries.DesktopLarge} {
-      font-size: 5rem;
-      padding: 30px;
-    }
-
-    ${MediaQueries.Desktop} {
-      font-size: 4rem;
-    }
-
-    ${MediaQueries.Laptop} {
-      padding: 15px;
+      font-size: 3rem;
+      padding: 20px;
     }
 
     ${MediaQueries.Mobile} {

@@ -3,12 +3,13 @@ import { MediaQueries } from '../../../core/constants/mediaQueries';
 
 export const MainHeader = styled.div`
   display: flex;
-  justify-content: flex-end;
-  gap: 20px;
   align-items: center;
-  width: 100%;
+  flex-direction: column-reverse;
+  gap: 20px;
+  position: absolute;
+  right: 20px;
 
-  ${MediaQueries.Mobile} {
-    flex-direction: column-reverse;
+  ${MediaQueries.Laptop} {
+    position: static;
   }
 `;

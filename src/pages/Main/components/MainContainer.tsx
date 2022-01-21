@@ -8,6 +8,6 @@ export const MainContainer = styled.div`
   gap: 30px;
 
   position: relative;
-  margin: 20px auto;
-  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
 `;

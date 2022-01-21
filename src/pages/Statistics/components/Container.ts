@@ -3,12 +3,17 @@ import styled from 'styled-components';
 import { MediaQueries } from '../../../core/constants/mediaQueries';
 
 export const Container = styled(Paper)`
-  padding: 5px;
-  &.MuiPaper-root {
+  max-height: calc(100vh - 100px);
+
+  & .MuiTable-root {
+    height: 'max-content';
+  }
+
+  & .MuiTableCell-head {
     background-color: ${({ theme }) => theme.palette.primary.backgroundLight};
   }
   & .MuiTable-root {
-    background-color: white;
+    background-color: ${({ theme }) => theme.palette.primary.backgroundWhite};
   }
 
   & .MuiTableCell-root {

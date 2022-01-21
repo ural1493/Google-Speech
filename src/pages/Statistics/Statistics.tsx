@@ -16,10 +16,10 @@ import { UserData } from '../../core/interfaces/db';
 import { useTranslation } from 'react-i18next';
 import { OrderType } from '../../core/interfaces/statistics';
 import { StatisticsTableBody } from './components/StatisticsTableBody';
-import { Container } from './styled/Container';
+import { Container } from './components/Container';
 import { AuthLink } from '../../core/components/AuthLink/AuthLink';
 import { MainRoutes } from '../../core/constants/MainRouters';
-import { StatisticsContainer } from './styled/StatisticsContainer';
+import { StatisticsContainer } from './components/StatisticsContainer';
 
 export const Statistics: FC = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ export const Statistics: FC = () => {
     <StatisticsContainer>
       <AuthLink to={MainRoutes.Main}>{t('back')}</AuthLink>
       <TableContainer component={Container}>
-        <Table>
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell align="center">{headerCells[0].label}</TableCell>

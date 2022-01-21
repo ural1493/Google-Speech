@@ -16,10 +16,10 @@ export const WordsContainer = styled.div`
     width: 400px;
 
     ${MediaQueries.DesktopLarge} {
-      width: 300px;
+      width: 250px;
 
       & .MuiTypography-root {
-        font-size: 1.5rem;
+        font-size: 1rem;
       }
     }
 
@@ -27,8 +27,11 @@ export const WordsContainer = styled.div`
       width: 200px;
 
       & .MuiTypography-root {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
+    }
+    ${MediaQueries.Mobile} {
+      width: 90%;
     }
   }
 `;

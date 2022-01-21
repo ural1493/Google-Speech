@@ -15,6 +15,6 @@ export const StartContainer = styled.div`
 
   ${Button} {
     width: 200px;
-    color: white;
+    color: ${({ theme }) => theme.palette.primary.backgroundWhite};
   }
 `;

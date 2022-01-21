@@ -3,13 +3,13 @@ import { MediaQueries } from '../../../core/constants/mediaQueries';
 
 export const MainImg = styled.img`
   border-radius: 10px;
-  box-shadow: 5px 5px 25px rgb(118 118 118 / 25%);
+  box-shadow: 5px 5px 25px
+    ${({ theme }) => theme.palette.boxShadowColor.mainImg};
 
   height: 450px;
 
   ${MediaQueries.DesktopLarge} {
-    width: 390px;
-    height: 260px;
+    height: 230px;
   }
 
   ${MediaQueries.Mobile} {

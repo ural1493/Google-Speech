@@ -46,8 +46,7 @@ export const Word: FC<WordProps> = ({
     <WordContainer onClick={handleClick} isAnswered={isAnswered}>
       <VolumeUpIcon />
       <TextContainer>
-        <Typography>{word}</Typography>
-        <Typography>{transcription}</Typography>
+        <Typography>{`${word} ${transcription}`}</Typography>
         <FormControlLabel
           label={t('skip') as string}
           control={<Checkbox onChange={handleSkipWord} />}

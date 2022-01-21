@@ -24,6 +24,7 @@ import {
   compareWords,
   getLastWordFromString,
   getRandomPage,
+  playAudio,
 } from '../../helpers/words';
 import { db } from '../../firebase';
 import {
@@ -36,6 +37,7 @@ import {
 import { selectUser } from '../selectors/user';
 import { DbCollections } from '../../constants/db';
 import { UserData } from '../../interfaces/db';
+import successSound from '../../../assets/success-sound.mp3';
 
 function* GetWordsWorker(): Generator<
   StrictEffect,
@@ -72,6 +74,7 @@ function* AnsweredWordsWorker(
     !skippedWords.includes(foundWord.id)
   ) {
     yield put(addWordToAnswered(foundWord.id));
+    playAudio(successSound);
   }
 }
 

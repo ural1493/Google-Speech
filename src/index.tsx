@@ -5,7 +5,7 @@ import './index.css';
 import './core/i18n/i18n';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStyled from './globalStyled';
+import GlobalStyled from './core/styles/globalStyled';
 import { Provider } from 'react-redux';
 import { store } from './core/redux/store';
 

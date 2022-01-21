@@ -10,7 +10,7 @@ export const AuthForm = styled.form`
   margin-top: 30px;
 
   ${MediaQueries.DesktopLarge} {
-    gap: 40px;
+    gap: 30px;
     margin-top: 20px;
   }
   ${MediaQueries.Laptop} {

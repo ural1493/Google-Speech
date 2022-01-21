@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { Button } from '../../core/components/Button/Button';
-import { ButtonContainer } from './styled/ButtonContainer';
-import { MainContainer } from './styled/MainContainer';
+import { ButtonContainer } from './components/ButtonContainer';
+import { MainContainer } from './components/MainContainer';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { getWords } from '../../core/redux/actions/words/words';
@@ -14,12 +14,13 @@ import { getLastWordFromString } from '../../core/helpers/words';
 import { useSpeech } from '../../core/hooks/useSpeech';
 import { useNavigate } from 'react-router-dom';
 import { MainRoutes } from '../../core/constants/MainRouters';
-import { WordsContainer } from './styled/WordsContainer';
+import { WordsContainer } from './components/WordsContainer';
 import MicIcon from '@mui/icons-material/Mic';
-import { TranscriptContainer } from './styled/TranscriptContainer';
-import { Dropdown } from './styled/Dropdown';
-import { MainHeader } from './styled/MainHeader';
+import { TranscriptContainer } from './components/TranscriptContainer';
+import { Dropdown } from './components/Dropdown';
+import { MainHeader } from './components/MainHeader';
 import { Account } from './components/Account';
+import { LanguageSelector } from '../../core/components/LanguageSelector/LanguageSelector';
 
 export const Main: FC = () => {
   const [chosenImg, setChosenImg] = useState('');
@@ -65,6 +66,7 @@ export const Main: FC = () => {
               }`}</MenuItem>
             ))}
           </Select>
+          <LanguageSelector />
         </Dropdown>
         <Account />
       </MainHeader>

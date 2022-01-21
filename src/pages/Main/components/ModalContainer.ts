@@ -1,38 +1,36 @@
 import styled from 'styled-components';
-import { MediaQueries } from '../../constants/mediaQueries';
-import { TextContainer } from '../Word/TextContainer';
-import { WordContainer } from '../Word/WordContainer';
+import { MediaQueries } from '../../../core/constants/mediaQueries';
+import { TextContainer } from '../../../core/components/Word/TextContainer';
+import { WordContainer } from '../../../core/components/Word/WordContainer';
+import { AbsoluteCenter } from '../../../core/styles/AbsoluteCenter';
 
 export const ModalContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
+  ${AbsoluteCenter}
+  background-color: ${({ theme }) => theme.palette.primary.backgroundWhite};
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  gap: 5px;
-  border-radius: 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 
+  border-radius: 20px;
   width: 70%;
-  padding: 60px 120px;
+  height: 70%;
+  padding: 60px;
   & .MuiTypography-root {
     font-size: 2rem;
   }
 
   ${MediaQueries.DesktopLarge} {
-    width: 70%;
-    padding: 20px 100px;
-    overflow: auto;
     & .MuiTypography-root {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
 
-  ${MediaQueries.Tablet} {
+  ${MediaQueries.Laptop} {
+    padding: 20px;
     & .MuiTypography-root {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -42,7 +40,7 @@ export const ModalContainer = styled.div`
     ${MediaQueries.DesktopLarge} {
       width: 400px;
     }
-    ${MediaQueries.Tablet} {
+    ${MediaQueries.Desktop} {
       width: 100%;
     }
   }

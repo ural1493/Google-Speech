@@ -9,6 +9,7 @@ export const StartText = styled.p`
   color: ${(props) => props.theme.palette.text.secondary};
   opacity: 0.8;
   text-align: center;
+  padding: 15px;
 
   ${MediaQueries.DesktopLarge} {
     font-size: 1.5rem;

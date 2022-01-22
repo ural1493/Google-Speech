@@ -4,7 +4,7 @@ export const theme = {
       main: '#00c49d',
       mainDark: '#00c2b2',
       backgroundLight: '#dcfff8',
-      backgroundWhite: 'white',
+      mainBackground: 'white',
     },
     text: {
       main: '#000',

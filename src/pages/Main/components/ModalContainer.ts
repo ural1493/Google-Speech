@@ -6,7 +6,7 @@ import { AbsoluteCenter } from '../../../core/styles/AbsoluteCenter';
 
 export const ModalContainer = styled.div`
   ${AbsoluteCenter}
-  background-color: ${({ theme }) => theme.palette.primary.backgroundWhite};
+  background-color: ${({ theme }) => theme.palette.primary.mainBackground};
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -7,7 +7,7 @@ export const ModalContainer = styled.div`
   ${FlexCenter}
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.palette.primary.backgroundWhite};
+  background-color: ${({ theme }) => theme.palette.primary.mainBackground};
   gap: 20px;
   padding: 30px;
   max-width: 50%;

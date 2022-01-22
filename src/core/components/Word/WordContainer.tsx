@@ -18,7 +18,7 @@ export const WordContainer = styled.div<WordContainerProps>`
   background-color: ${(props) =>
     props.isAnswered
       ? props.theme.palette.primary.backgroundLight
-      : props.theme.palette.primary.backgroundWhite};
+      : props.theme.palette.primary.mainBackground};
 
   &:hover {
     cursor: pointer;

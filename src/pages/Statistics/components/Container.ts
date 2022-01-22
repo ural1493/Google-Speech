@@ -13,7 +13,7 @@ export const Container = styled(Paper)`
     background-color: ${({ theme }) => theme.palette.primary.backgroundLight};
   }
   & .MuiTable-root {
-    background-color: ${({ theme }) => theme.palette.primary.backgroundWhite};
+    background-color: ${({ theme }) => theme.palette.primary.mainBackground};
   }
 
   & .MuiTableCell-root {

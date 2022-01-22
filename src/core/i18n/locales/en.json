@@ -1,6 +1,8 @@
 {
-  "registration": "registration",
-  "login": "login",
+  "language": "english",
+  "logoText": "SPEAKIT",
+  "registration": "Registration",
+  "login": "Login",
   "submit": "submit",
   "email": "email",
   "password": "password",
@@ -8,7 +10,8 @@
   "invalidEmail": "invalid email",
   "invalidPassword": "invalid password",
   "passwordsDoNotMatch": "passwords do not match",
-  "registrate": "registrate",
+  "toRegistrate": "registrate",
+  "toLogin": "login",
   "start": "start",
   "startText": "Click on the words to hear them sound. Click on the button and speak the words into the microphone.",
   "restart": "restart",
@@ -19,5 +22,13 @@
   "on": "on",
   "off": "off",
   "date": "date",
-  "score": "score"
+  "score": "score",
+  "skip": "skip",
+  "back": "back to game",
+  "right": "right :",
+  "wrong": "wrong :",
+  "logout": "logout",
+  "yes": "yes",
+  "no": "no",
+  "comfirmLogout": "Are you sure you want to logout?"
 }

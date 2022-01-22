@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import startImage from '../../../assets/default.jpg';
 import { url } from '../../../core/constants/urls';
+import { MainImg } from './MainImg';
 
 interface ChosenImageProps {
   imageUrl: string;
@@ -8,12 +9,9 @@ interface ChosenImageProps {
 
 export const ChosenImage: FC<ChosenImageProps> = ({ imageUrl }) => {
   return (
-    <div>
-      <img
-        width={400}
-        src={!imageUrl ? startImage : `${url.ASSETS}${imageUrl}`}
-        alt=""
-      />
-    </div>
+    <MainImg
+      src={!imageUrl ? startImage : `${url.ASSETS}${imageUrl}`}
+      alt="chosen word's image"
+    />
   );
 };

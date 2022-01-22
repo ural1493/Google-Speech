@@ -42,7 +42,7 @@ export const useSpeech = (): UseSpeechReturn => {
       const isGameOver = activeWords === words.length;
 
       if (isGameOver) {
-        dispatch(updateUserWords);
+        dispatch(updateUserWords());
         handleStopListening();
         resetTranscript();
         setResultsIsOpen(true);

@@ -1,8 +1,11 @@
 import { FC } from 'react';
 import { Word } from '../../../core/components/Word/Word';
-import { Modal } from '@mui/material';
+import { Modal, Typography } from '@mui/material';
 import { Word as WordType } from '../../../core/interfaces/words';
-import { ModalContainer } from '../../../core/components/ModalContainer.ts/ModalContainer';
+import { ModalContainer } from './ModalContainer';
+import { useTranslation } from 'react-i18next';
+import { ModalContent } from './ModalContent';
+import { Button } from '../../../core/components/Button/Button';
 
 interface ResultsProps {
   onClose: () => void;
@@ -17,33 +20,38 @@ export const Results: FC<ResultsProps> = ({
   words,
   rightAnswers,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Modal open={isOpen} onClose={onClose}>
       <ModalContainer>
-        <div>RIGHT:</div>
-        {words &&
-          words
-            .filter(({ id }) => rightAnswers.includes(id))
-            .map(({ word, transcription, id, audio }) => (
-              <Word
-                key={id}
-                word={word}
-                transcription={transcription}
-                audio={audio}
-              />
-            ))}
-        <div>WRONG:</div>
-        {words &&
-          words
-            .filter(({ id }) => !rightAnswers.includes(id))
-            .map(({ word, transcription, id, audio }) => (
-              <Word
-                key={id}
-                word={word}
-                transcription={transcription}
-                audio={audio}
-              />
-            ))}
+        <ModalContent>
+          <Typography>{t('right')}</Typography>
+          {words &&
+            words
+              .filter(({ id }) => rightAnswers.includes(id))
+              .map(({ word, transcription, id, audio }) => (
+                <Word
+                  key={id}
+                  word={word}
+                  transcription={transcription}
+                  audio={audio}
+                />
+              ))}
+          <Typography>{t('wrong')}</Typography>
+          {words &&
+            words
+              .filter(({ id }) => !rightAnswers.includes(id))
+              .map(({ word, transcription, id, audio }) => (
+                <Word
+                  key={id}
+                  word={word}
+                  transcription={transcription}
+                  audio={audio}
+                />
+              ))}
+        </ModalContent>
+        <Button onClick={onClose}>{t('back')}</Button>
       </ModalContainer>
     </Modal>
   );

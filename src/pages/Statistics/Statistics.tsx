@@ -5,7 +5,6 @@ import {
   TableHead,
   TableRow,
   TableContainer,
-  Paper,
   TableSortLabel,
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -17,6 +16,10 @@ import { UserData } from '../../core/interfaces/db';
 import { useTranslation } from 'react-i18next';
 import { OrderType } from '../../core/interfaces/statistics';
 import { StatisticsTableBody } from './components/StatisticsTableBody';
+import { Container } from './components/Container';
+import { AuthLink } from '../../core/components/AuthLink/AuthLink';
+import { MainRoutes } from '../../core/constants/MainRouters';
+import { StatisticsContainer } from './components/StatisticsContainer';
 
 export const Statistics: FC = () => {
   const dispatch = useDispatch();
@@ -58,35 +61,38 @@ export const Statistics: FC = () => {
   const sortableHeaderCells = headerCells.slice(1);
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>{headerCells[0].label}</TableCell>
-            {sortableHeaderCells.map(({ id, label }) => (
-              <TableCell
-                key={id}
-                align="center"
-                sortDirection={orderBy === id ? order : false}
-              >
-                <TableSortLabel
-                  active={orderBy === id}
-                  direction={orderBy === id ? order : 'asc'}
-                  onClick={handleRequestSort(id as keyof UserData)}
+    <StatisticsContainer>
+      <AuthLink to={MainRoutes.Main}>{t('back')}</AuthLink>
+      <TableContainer component={Container}>
+        <Table stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center">{headerCells[0].label}</TableCell>
+              {sortableHeaderCells.map(({ id, label }) => (
+                <TableCell
+                  key={id}
+                  align="center"
+                  sortDirection={orderBy === id ? order : false}
                 >
-                  {label}
-                </TableSortLabel>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
+                  <TableSortLabel
+                    active={orderBy === id}
+                    direction={orderBy === id ? order : 'asc'}
+                    onClick={handleRequestSort(id as keyof UserData)}
+                  >
+                    {label}
+                  </TableSortLabel>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
 
-        <StatisticsTableBody
-          usersStatistics={usersStatistics}
-          order={order}
-          orderBy={orderBy}
-        />
-      </Table>
-    </TableContainer>
+          <StatisticsTableBody
+            usersStatistics={usersStatistics}
+            order={order}
+            orderBy={orderBy}
+          />
+        </Table>
+      </TableContainer>
+    </StatisticsContainer>
   );
 };

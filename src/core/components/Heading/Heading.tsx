@@ -10,30 +10,19 @@ export const Heading = styled(Typography)`
     ${(props) => props.theme.palette.boxShadowColor.heading};
 
   &.MuiTypography-root {
-    font-size: 6rem;
-    padding: 2.5rem;
-    margin-bottom: 6rem;
+    font-size: 4rem;
+    padding: 40px;
+    margin-bottom: 20px;
 
     ${MediaQueries.DesktopLarge} {
-      font-size: 5rem;
-      padding: 2rem;
-      margin-bottom: 4rem;
-    }
-
-    ${MediaQueries.Desktop} {
-      font-size: 4rem;
-      margin-bottom: 3rem;
-    }
-
-    ${MediaQueries.Laptop} {
-      padding: 1.5rem;
-      margin-bottom: 2rem;
+      font-size: 3rem;
+      padding: 20px;
     }
 
     ${MediaQueries.Mobile} {
       font-size: 3rem;
-      padding: 1.2rem;
-      margin-bottom: 1rem;
+      padding: 20px;
+      margin-bottom: 10px;
     }
   }
 `;

@@ -13,19 +13,23 @@ export const TextFiled = styled(TextFieldComponent)`
     font-size: 2rem;
   }
 
-  ${MediaQueries.Desktop} {
+  ${MediaQueries.DesktopLarge} {
+    width: 400px;
+
     & .MuiInputBase-root {
-      font-size: 2rem;
+      font-size: 1rem;
     }
     & .MuiInputLabel-root {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
     & .MuiFormHelperText-root {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
 
   ${MediaQueries.Mobile} {
+    width: 80%;
+
     & .MuiInputBase-root {
       font-size: 1.2rem;
     }

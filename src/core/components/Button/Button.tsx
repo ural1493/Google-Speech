@@ -10,17 +10,11 @@ export const Button = styled(ButtonComponent)`
     }
     color: ${(props) => props.theme.palette.text.secondary};
     font-size: 2.5rem;
-    max-width: 200px;
+    padding: 15px 20px;
+
     ${MediaQueries.DesktopLarge} {
-      font-size: 2rem;
-    }
-
-    ${MediaQueries.Desktop} {
-      font-size: 1.5rem;
-    }
-
-    ${MediaQueries.Laptop} {
-      font-size: 1.2rem;
+      font-size: 1rem;
+      padding: 10px 15px;
     }
   }
 `;

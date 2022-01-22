@@ -6,6 +6,8 @@ declare module 'styled-components' {
       primary: {
         main: string;
         mainDark: string;
+        backgroundLight: string;
+        mainBackground: string;
       };
       text: {
         main: string;
@@ -15,6 +17,7 @@ declare module 'styled-components' {
       boxShadowColor: {
         heading: string;
         word: string;
+        mainImg: string;
       };
       border: {
         wordContainer: string;

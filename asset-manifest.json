@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/google-speech/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/google-speech/static/js/main.c9d0be4d.chunk.js",
-    "main.js.map": "/google-speech/static/js/main.c9d0be4d.chunk.js.map",
-    "runtime-main.js": "/google-speech/static/js/runtime-main.be841d70.js",
-    "runtime-main.js.map": "/google-speech/static/js/runtime-main.be841d70.js.map",
-    "static/js/2.cc650da2.chunk.js": "/google-speech/static/js/2.cc650da2.chunk.js",
-    "static/js/2.cc650da2.chunk.js.map": "/google-speech/static/js/2.cc650da2.chunk.js.map",
-    "static/js/3.9a1fdd70.chunk.js": "/google-speech/static/js/3.9a1fdd70.chunk.js",
-    "static/js/3.9a1fdd70.chunk.js.map": "/google-speech/static/js/3.9a1fdd70.chunk.js.map",
-    "index.html": "/google-speech/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/google-speech/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.cc650da2.chunk.js.LICENSE.txt": "/google-speech/static/js/2.cc650da2.chunk.js.LICENSE.txt",
-    "static/media/bg-google-speech.54b27358.png": "/google-speech/static/media/bg-google-speech.54b27358.png",
-    "static/media/default.a98a9af5.jpg": "/google-speech/static/media/default.a98a9af5.jpg",
-    "static/media/success-sound.574f8a06.mp3": "/google-speech/static/media/success-sound.574f8a06.mp3"
+    "main.css": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/main.8f0ad306.chunk.js",
+    "main.js.map": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/main.8f0ad306.chunk.js.map",
+    "runtime-main.js": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/runtime-main.155a55e7.js",
+    "runtime-main.js.map": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/runtime-main.155a55e7.js.map",
+    "static/js/2.a2a0c3ef.chunk.js": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/2.a2a0c3ef.chunk.js",
+    "static/js/2.a2a0c3ef.chunk.js.map": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/2.a2a0c3ef.chunk.js.map",
+    "static/js/3.9a1fdd70.chunk.js": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/3.9a1fdd70.chunk.js",
+    "static/js/3.9a1fdd70.chunk.js.map": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/3.9a1fdd70.chunk.js.map",
+    "index.html": "/Innowise-Lab-Internship-Level-3-Google-Speech/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.a2a0c3ef.chunk.js.LICENSE.txt": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/js/2.a2a0c3ef.chunk.js.LICENSE.txt",
+    "static/media/bg-google-speech.54b27358.png": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/media/bg-google-speech.54b27358.png",
+    "static/media/default.a98a9af5.jpg": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/media/default.a98a9af5.jpg",
+    "static/media/success-sound.574f8a06.mp3": "/Innowise-Lab-Internship-Level-3-Google-Speech/static/media/success-sound.574f8a06.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.be841d70.js",
-    "static/js/2.cc650da2.chunk.js",
+    "static/js/runtime-main.155a55e7.js",
+    "static/js/2.a2a0c3ef.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.c9d0be4d.chunk.js"
+    "static/js/main.8f0ad306.chunk.js"
   ]
 }

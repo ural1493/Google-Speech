@@ -2,6 +2,7 @@
   "name": "google-speech",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ural1493.github.io/Innowise-Lab-Internship-Level-3-Google-Speech/",
   "dependencies": {
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
@@ -42,7 +43,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lint": "npx eslint --fix ./src/**/*.{ts,tsx}"
+    "lint": "npx eslint --fix ./src/**/*.{ts,tsx}",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

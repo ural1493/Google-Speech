@@ -15,14 +15,11 @@ import { Statistics } from './pages/Statistics/Statistics';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
       if (firebaseUser) {
         dispatch(setUser(firebaseUser));
-        // navigate(MainRoutes.Start);
-        // TODO редирект все еще работает.
       } else {
         dispatch(setUser(null));
       }

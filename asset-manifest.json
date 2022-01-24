@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/google-speech/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/google-speech/static/js/main.c9d0be4d.chunk.js",
+    "main.js.map": "/google-speech/static/js/main.c9d0be4d.chunk.js.map",
+    "runtime-main.js": "/google-speech/static/js/runtime-main.be841d70.js",
+    "runtime-main.js.map": "/google-speech/static/js/runtime-main.be841d70.js.map",
+    "static/js/2.cc650da2.chunk.js": "/google-speech/static/js/2.cc650da2.chunk.js",
+    "static/js/2.cc650da2.chunk.js.map": "/google-speech/static/js/2.cc650da2.chunk.js.map",
+    "static/js/3.9a1fdd70.chunk.js": "/google-speech/static/js/3.9a1fdd70.chunk.js",
+    "static/js/3.9a1fdd70.chunk.js.map": "/google-speech/static/js/3.9a1fdd70.chunk.js.map",
+    "index.html": "/google-speech/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/google-speech/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.cc650da2.chunk.js.LICENSE.txt": "/google-speech/static/js/2.cc650da2.chunk.js.LICENSE.txt",
+    "static/media/bg-google-speech.54b27358.png": "/google-speech/static/media/bg-google-speech.54b27358.png",
+    "static/media/default.a98a9af5.jpg": "/google-speech/static/media/default.a98a9af5.jpg",
+    "static/media/success-sound.574f8a06.mp3": "/google-speech/static/media/success-sound.574f8a06.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be841d70.js",
+    "static/js/2.cc650da2.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.c9d0be4d.chunk.js"
+  ]
+}
